@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".function.activity.DetailKlasifikasiGambarActivity">
+
+
+    <TextView
+        android:id="@+id/keterangan_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textSize="16dp"
+        android:text="Dengan memilih gambar, anda akan melakukan pengecekan kualitas gambar.\n \nHasil pengujian kualitas gambar adalah gambar baik atau gambar buruk."
+        android:lineSpacingExtra="1dp"
+        android:textColor="@color/black_text"
+        />
+
+    <TextView
+        android:id="@+id/grid_text"
+        android:layout_below="@+id/keterangan_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:text="Apple"
+        android:textColor="@color/black_text"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/grid_img"
+        android:src="@drawable/sample_1"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/grid_text"/>
+
+    <TextView
+        android:id="@+id/profession_text"
+        android:layout_below="@+id/grid_img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:text="Apple"
+        android:textColor="@color/black_text"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
+
+    <TextView
+        android:id="@+id/kualitas_text"
+        android:layout_below="@+id/grid_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/background"
+        android:hint="Hasil cek kualitas"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/cek_kualitas_button"
+        android:layout_width="wrap_content"
+        android:ems="10"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:text="Cek Kualitas"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/style_dialog"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".function.activity.KlasifikasiulosActivity">
+
+    <TextView
+        android:id="@+id/tv_title_klasifikasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Klasifikasi Ulos"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <ImageView
+        android:id="@+id/iv_showimage_klasifikasi"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:minHeight="200dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/take_photo2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_klasifikasi"></ImageView>
+
+    <ImageView
+        android:id="@+id/iv_getGallery_klasifikasi"
+        android:layout_marginTop="16dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_showimage_klasifikasi"
+        app:layout_constraintStart_toStartOf="@+id/iv_showimage_klasifikasi"
+        app:layout_constraintTop_toBottomOf="@+id/iv_showimage_klasifikasi"
+        app:srcCompat="@drawable/upload_image2" />
+
+    <Button
+        android:id="@+id/btn_klasifikasi_klasifikasi"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:text="Klasifikasi"
+        android:fontFamily="monospace"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/iv_getGallery_klasifikasi"
+        app:layout_constraintStart_toStartOf="@+id/iv_getGallery_klasifikasi"
+        app:layout_constraintTop_toBottomOf="@+id/iv_getGallery_klasifikasi"></Button>
+
+    <TextView
+        android:id="@+id/tv_hasilTitle_klasifikasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:textSize="16dp"
+        android:text="Hasil Klasifikasi"
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_klasifikasi_klasifikasi"
+        android:layout_marginStart="24dp" />
+
+    <TextView
+        android:id="@+id/tv_hasil_klasifikasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="12dp"
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toStartOf="@+id/tv_hasilTitle_klasifikasi"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hasilTitle_klasifikasi" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
