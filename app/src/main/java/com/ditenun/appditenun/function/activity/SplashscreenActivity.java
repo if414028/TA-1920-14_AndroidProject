@@ -117,7 +117,6 @@ public class SplashscreenActivity extends AppCompatActivity {
                     realm.beginTransaction();
                     realm.executeTransactionAsync(realm3 -> realm3.insertOrUpdate(response.body().getData()));
                     realm.commitTransaction();
-
                     requestFaqFromServer();
                 }
             }
