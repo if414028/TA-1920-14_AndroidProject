@@ -245,5 +245,15 @@
     <string name="name_text">Enter name...</string>
     <string name="profession_text">Enter profession</string>
 
+    <!--Login-->
+    <string name="login_title">Sign In ke Ditenun</string>
+    <string name="login_desc">Apakah anda belum memiliki akun?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">E-mail</string>
+    <string name="email_hint">Email atau No HP</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Lupa password?</string>
+    <string name="sign_in">Sign In</string>
 
 </resources>

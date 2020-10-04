@@ -95,5 +95,11 @@
     <color name="backgrounddark">#AE919191</color>
     <color name="grey">#bfbfbf</color>
 
-
+    <color name="dark_blue">#384c77</color>
+    <color name="dark_grey">#252525</color>
+    <color name="blue_356cd3">#356cd3</color>
+    <color name="grey_aaaaaa">#AAAAAA</color>
+    <color name="grey_dadada">#DADADA</color>
+    <color name="transparent">#00000000</color>
+    <color name="blue_358ed7">#358ed7</color>
 </resources>

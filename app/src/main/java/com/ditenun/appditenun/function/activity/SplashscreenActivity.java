@@ -119,6 +119,9 @@ public class SplashscreenActivity extends AppCompatActivity {
                     realm.commitTransaction();
 
                     requestFaqFromServer();
+                } else {
+                    Timber.i(String.valueOf(response.code()));
+                    showErrorMessage(String.valueOf(response.code()));
                 }
             }
 
