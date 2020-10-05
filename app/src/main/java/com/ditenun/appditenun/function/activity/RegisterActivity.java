@@ -2,8 +2,11 @@ package com.ditenun.appditenun.function.activity;
 
 import android.content.Intent;
 
+import com.ditenun.appditenun.databinding.ActivityRegisterBinding;
 import com.ditenun.appditenun.dependency.models.ResponseGetUser;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,15 +35,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText nameReg;
-    EditText emailReg;
-    EditText passwordReg;
-    EditText phoneReg;
-    EditText addressReg;
-    Button btnRegister;
-
-    @BindView(R.id.container)
-    RelativeLayout rootContainer;
+    private ActivityRegisterBinding binding;
 
     @Inject
     Realm realm;
@@ -53,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
 
         App.get(this).getInjector().inject(this);
 
@@ -63,31 +58,23 @@ public class RegisterActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        nameReg = (EditText) findViewById(R.id.nameReg);
-        emailReg = (EditText) findViewById(R.id.emailReg);
-        passwordReg = (EditText) findViewById(R.id.passwordReg);
-        phoneReg = (EditText) findViewById(R.id.phoneReg);
-        addressReg = (EditText) findViewById(R.id.addressReg);
-        btnRegister = (Button) findViewById(R.id.register);
+        binding.register.setOnClickListener(v -> {
+            String name = binding.nameReg.getText().toString();
+            String email = binding.emailReg.getText().toString();
+            String password = binding.passwordReg.getText().toString();
+            String phone = binding.phoneReg.getText().toString();
+            String address = binding.addressReg.getText().toString();
+            String jenis_tenun = spinner.getSelectedItem().toString();
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = nameReg.getText().toString();
-                String email = emailReg.getText().toString();
-                String password = passwordReg.getText().toString();
-                String phone = phoneReg.getText().toString();
-                String address = addressReg.getText().toString();
-                String jenis_tenun = spinner.getSelectedItem().toString();
-
-                if(validateRegister(name, email, password, phone, address, jenis_tenun)){
-                    //do login
+            if (validateRegister(name, email, password, phone, address, jenis_tenun)) {
+                //do login
 //                    if (register(name, email, password, phone, address, jenis_tenun)){
-                        doRegister(name, email, password, phone, address, jenis_tenun);
+                doRegister(name, email, password, phone, address, jenis_tenun);
 //                    }
-                }
             }
         });
+
+        binding.tvSignIn.setOnClickListener(v -> onBackPressed());
     }
 
     @Override
@@ -95,40 +82,40 @@ public class RegisterActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    private boolean register(String name, String email, String password, String phone, String address, String jenis_tenun){
+    private boolean register(String name, String email, String password, String phone, String address, String jenis_tenun) {
         doRegister(name, email, password, phone, address, jenis_tenun);
         return true;
     }
 
-    private boolean validateRegister(String name, String email, String password, String phone, String address, String jenis_tenun){
-        if(name == null || name.trim().length() == 0){
+    private boolean validateRegister(String name, String email, String password, String phone, String address, String jenis_tenun) {
+        if (name == null || name.trim().length() == 0) {
             Toast.makeText(this, "Masukkan nama anda", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(email == null || email.trim().length() == 0){
+        if (email == null || email.trim().length() == 0) {
             Toast.makeText(this, "Masukkan email anda", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(password == null || password.trim().length() == 0){
+        if (password == null || password.trim().length() == 0) {
             Toast.makeText(this, "Masukkan password anda", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(phone == null || phone.trim().length() == 0){
+        if (phone == null || phone.trim().length() == 0) {
             Toast.makeText(this, "Masukkan phone anda", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(address == null || address.trim().length() == 0){
+        if (address == null || address.trim().length() == 0) {
             Toast.makeText(this, "Masukkan address anda", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(jenis_tenun == null || jenis_tenun.trim().length() == 0){
+        if (jenis_tenun == null || jenis_tenun.trim().length() == 0) {
             Toast.makeText(this, "Pilih jenis tenun anda", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
 
-    private void doRegister(String name, String email, String password, String phone, String address, String jenis_tenun){
+    private void doRegister(String name, String email, String password, String phone, String address, String jenis_tenun) {
         String loginEmail = email;
         String loginPass = password;
         tenunNetworkInterface.register(APIModule.ACCESS_TOKEN_TEMP, name, email, password, phone, address, jenis_tenun).enqueue(new Callback<ResponseGetUser>() {
@@ -151,7 +138,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void doLogin(String email, String password){
+    private void doLogin(String email, String password) {
         tenunNetworkInterface.login(APIModule.ACCESS_TOKEN_TEMP, email, password).enqueue(new Callback<ResponseGetUser>() {
             @Override
             public void onResponse(Call<ResponseGetUser> call, Response<ResponseGetUser> response) {
@@ -169,16 +156,6 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-        startActivity(intent);
-
-        finish();
-    }
-
     private void startHomeActivity() {
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -189,12 +166,12 @@ public class RegisterActivity extends AppCompatActivity {
         finish();
     }
 
-    private boolean successResponse(){
+    private boolean successResponse() {
         Toast.makeText(this, "Berhasil mendaftar", Toast.LENGTH_SHORT).show();
         return true;
     }
 
-    private boolean failResponse(){
+    private boolean failResponse() {
         Toast.makeText(this, "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
         return false;
     }

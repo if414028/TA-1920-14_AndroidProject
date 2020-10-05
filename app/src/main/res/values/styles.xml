@@ -153,4 +153,30 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="Roboto.Regular" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+
+    <style name="Roboto.Italic" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/italic</item>
+    </style>
+
+    <style name="Roboto.Bold" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+
+    <style name="Roboto.SemiBold" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/semibold</item>
+    </style>
+
+    <style name="Roboto.Light" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/light</item>
+    </style>
+
+    <style name="CheckboxSelector" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/blue_358ed7</item>
+        <item name="android:colorControlActivated" tools:targetApi="lollipop">#0091ea</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
+    </style>
+    
 </resources>
