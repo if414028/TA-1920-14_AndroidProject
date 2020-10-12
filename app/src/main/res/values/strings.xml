@@ -256,4 +256,7 @@
     <string name="forgot_password">Lupa password?</string>
     <string name="sign_in">Sign In</string>
 
+    <string name="product">Produk</string>
+    <string name="cart">Cart</string>
+    <string name="account">Akun</string>
 </resources>

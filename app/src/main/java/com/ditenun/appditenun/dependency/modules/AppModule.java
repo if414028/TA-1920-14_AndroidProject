@@ -3,6 +3,7 @@ package com.ditenun.appditenun.dependency.modules;
 import android.app.Application;
 
 import com.ditenun.appditenun.dependency.App;
+import com.ditenun.appditenun.function.activity.DashboardActivity;
 import com.ditenun.appditenun.function.activity.DetailMotifActivity;
 import com.ditenun.appditenun.function.activity.DetailKristikActivity;
 import com.ditenun.appditenun.function.activity.DetailTenunActivity;
@@ -50,7 +51,8 @@ import dagger.Provides;
                 DuplicationPreviewActivity.class,
                 DetailKristikActivity.class,
                 EditKristikActivity.class,
-                EditShapeSizeKristikActivity.class
+                EditShapeSizeKristikActivity.class,
+                DashboardActivity.class
         }
 )
 
