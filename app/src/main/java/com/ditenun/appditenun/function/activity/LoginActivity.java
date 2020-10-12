@@ -135,10 +135,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void startRegisterActivity() {
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
         startActivity(intent);
-
-        finish();
     }
 }

@@ -1,125 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    tools:context=".function.activity.RegisterActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:background="#ffffff"
+        tools:context=".function.activity.RegisterActivity">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Register"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="30dp" />
+            android:orientation="vertical"
+            android:padding="@dimen/_16sdp">
 
-        <EditText
-            android:id="@+id/nameReg"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:padding="7dp"
-            android:background="@color/birupudar"
-            android:ems="10"
-            android:hint="Nama Lengkap"
-            android:inputType="textPersonName"
-            android:scaleType="fitCenter" />
+            <TextView
+                style="@style/Roboto.SemiBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:text="@string/register_title"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/_20ssp" />
 
-        <EditText
-            android:id="@+id/emailReg"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:padding="7dp"
-            android:background="@color/birupudar"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:scaleType="fitCenter" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/passwordReg"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:padding="7dp"
-            android:background="@color/birupudar"
-            android:scaleType="fitCenter"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:hint="Password"/>
+                <TextView
+                    style="@style/Roboto.SemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/register_desc"
+                    android:textColor="@color/grey_aaaaaa" />
 
-        <EditText
-            android:id="@+id/phoneReg"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:padding="7dp"
-            android:background="@color/birupudar"
-            android:ems="10"
-            android:hint="Nomor HP"
-            android:inputType="text"
-            android:scaleType="fitCenter" />
+                <TextView
+                    android:id="@+id/tv_sign_in"
+                    style="@style/Roboto.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:gravity="center_vertical"
+                    android:text="@string/underlines_sign_in"
+                    android:textColor="@color/blue_356cd3" />
 
-        <Spinner
-            android:id="@+id/tenun_spinner"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:padding="10dp"
-            android:background="@color/birupudar"
-            android:ems="10"
-            android:prompt="@array/jenis_tenun"/>
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/addressReg"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:padding="7dp"
-            android:background="@color/birupudar"
-            android:ems="10"
-            android:hint="Alamat lengkap"
-            android:inputType="text|textMultiLine"
-            android:gravity="top"
-            android:scaleType="fitCenter" />
+            <TextView
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:text="@string/full_name"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/register"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:padding="7dp"
-            android:background="@color/biru"
-            android:scaleType="fitCenter"
-            android:ems="10"
-            android:textSize="18dp"
-            android:textColor="@color/putih"
-            android:text="Daftar"/>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/nameReg"
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/edittext_rounded"
+                android:hint="@string/full_name"
+                android:inputType="textPersonName"
+                android:padding="@dimen/_16sdp"
+                android:scaleType="fitCenter" />
 
-</ScrollView>
+            <TextView
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/email"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/emailReg"
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/edittext_rounded"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_16sdp"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/password"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/passwordReg"
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/edittext_rounded"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="@dimen/_16sdp"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/phone"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/phoneReg"
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/edittext_rounded"
+                android:hint="@string/phone"
+                android:maxLines="1"
+                android:inputType="phone"
+                android:padding="@dimen/_16sdp"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/penenun_type"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/tenun_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_rounded"
+                style="@style/Roboto.Regular"
+                android:padding="@dimen/_16sdp"
+                android:prompt="@array/jenis_tenun" />
+
+            <TextView
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/address"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/addressReg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_rounded"
+                android:lines="8"
+                android:maxLines="10"
+                android:minLines="6"
+                android:gravity="top"
+                android:hint="@string/address"
+                android:inputType="text|textMultiLine"
+                style="@style/Roboto.Regular"
+                android:padding="@dimen/_16sdp"
+                android:scaleType="fitCenter" />
+
+            <Button
+                android:id="@+id/register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/main_button"
+                android:textAllCaps="false"
+                android:padding="@dimen/_8sdp"
+                android:text="@string/sign_up"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

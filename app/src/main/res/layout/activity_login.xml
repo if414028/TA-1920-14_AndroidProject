@@ -19,6 +19,7 @@
             android:scaleType="fitCenter">
 
             <TextView
+                style="@style/Roboto.SemiBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login_title"
@@ -29,30 +30,34 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
                 android:orientation="horizontal">
 
                 <TextView
+                    style="@style/Roboto.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
+                    android:gravity="center_vertical"
                     android:text="@string/login_desc"
                     android:textColor="@color/dark_blue" />
 
                 <TextView
                     android:id="@+id/gotoRegister"
+                    style="@style/Roboto.Regular"
+                    android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:text="@string/sign_up"
+                    android:text="@string/underlined_sign_up"
                     android:textColor="@color/blue_356cd3" />
 
             </LinearLayout>
 
             <TextView
+                style="@style/Roboto.Regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_24sdp"
                 android:text="@string/email"
                 android:textColor="@color/dark_blue"
                 android:textSize="@dimen/_12ssp"
@@ -60,6 +65,7 @@
 
             <EditText
                 android:id="@+id/email"
+                style="@style/Roboto.Regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -72,9 +78,10 @@
                 android:scaleType="fitCenter" />
 
             <TextView
+                style="@style/Roboto.Regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/password"
                 android:textColor="@color/dark_blue"
                 android:textSize="@dimen/_12ssp"
@@ -82,6 +89,7 @@
 
             <EditText
                 android:id="@+id/password"
+                style="@style/Roboto.Regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -96,15 +104,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/cb_remember_me"
+                    android:buttonTint="@color/blue_358ed7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    style="@style/Roboto.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/remember_me"
@@ -114,21 +124,23 @@
 
             <TextView
                 android:id="@+id/tv_forgot_pwd"
+                style="@style/Roboto.Regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:text="@string/forgot_password"
                 android:textColor="@color/blue_356cd3" />
 
             <Button
                 android:id="@+id/login"
+                style="@style/Roboto.SemiBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/main_button"
                 android:ems="10"
-                android:padding="7dp"
+                android:padding="@dimen/_8sdp"
                 android:scaleType="fitCenter"
                 android:text="@string/sign_in"
                 android:textAllCaps="false"

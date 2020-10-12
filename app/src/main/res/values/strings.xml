@@ -247,14 +247,25 @@
 
     <!--Login-->
     <string name="login_title">Sign In ke Ditenun</string>
-    <string name="login_desc">Apakah anda belum memiliki akun?</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="login_desc">Apakah Anda belum memiliki akun?</string>
     <string name="email">E-mail</string>
     <string name="email_hint">Email atau No HP</string>
     <string name="password">Password</string>
     <string name="remember_me">Remember me</string>
     <string name="forgot_password">Lupa password?</string>
     <string name="sign_in">Sign In</string>
+    <string name="underlines_sign_in"><u>Sign In</u></string>
+    
+    <!--Register-->
+    <string name="register_title">Membuat Akun Baru</string>
+    <string name="register_desc">Apakah Anda sudah memiliki akun?</string>
+    <string name="username">Username</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="underlined_sign_up"><u>Sign Up</u></string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="phone">Nomor HP</string>
+    <string name="address">Alamat Lengkap</string>
+    <string name="penenun_type">Jenis Penenun</string>
 
     <string name="product">Produk</string>
     <string name="cart">Cart</string>

@@ -95,11 +95,16 @@
     <color name="backgrounddark">#AE919191</color>
     <color name="grey">#bfbfbf</color>
 
-    <color name="dark_blue">#384c77</color>
+    <color name="dark_blue">#162f5d</color>
     <color name="dark_grey">#252525</color>
-    <color name="blue_356cd3">#356cd3</color>
+    <color name="blue_356cd3">#356cd7</color>
+    <color name="blue_0757a6">#0757a6</color>
     <color name="grey_aaaaaa">#AAAAAA</color>
     <color name="grey_dadada">#DADADA</color>
     <color name="transparent">#00000000</color>
     <color name="blue_358ed7">#358ed7</color>
+    <color name="gray_1">#f7f7f7</color>
+    <color name="gray_2">#e5e5ea</color>
+    <color name="gray_3">#d8d8d8</color>
+    <color name="gray_4">#d1d1d6</color>
 </resources>
