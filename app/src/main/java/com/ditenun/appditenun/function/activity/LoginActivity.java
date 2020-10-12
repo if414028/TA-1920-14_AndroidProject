@@ -5,21 +5,15 @@ import android.content.Intent;
 import com.ditenun.appditenun.databinding.ActivityLoginBinding;
 import com.ditenun.appditenun.dependency.models.ResponseGetUser;
 import com.ditenun.appditenun.dependency.modules.APIModule;
-import com.google.android.material.snackbar.Snackbar;
+import com.ditenun.appditenun.function.activity.dashboard.DashboardActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.MutableLiveData;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ditenun.appditenun.R;
@@ -28,7 +22,6 @@ import com.ditenun.appditenun.dependency.network.TenunNetworkInterface;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,13 +53,14 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         binding.login.setOnClickListener(v -> {
-            String email = binding.email.getText().toString();
-            String password = binding.password.getText().toString();
-            //validate form
-            if (validateLogin(email, password)) {
-                //do login
-                doLogin(email, password);
-            }
+//            String email = binding.email.getText().toString();
+//            String password = binding.password.getText().toString();
+//            //validate form
+//            if (validateLogin(email, password)) {
+//                //do login
+//                doLogin(email, password);
+//            }
+            startHomeActivity();
         });
 
         binding.gotoRegister.setOnClickListener(v -> startRegisterActivity());
@@ -125,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startHomeActivity() {
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         startActivity(intent);

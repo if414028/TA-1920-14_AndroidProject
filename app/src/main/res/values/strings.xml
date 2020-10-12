@@ -267,7 +267,12 @@
     <string name="address">Alamat Lengkap</string>
     <string name="penenun_type">Jenis Penenun</string>
 
+    <!--Dashboard-->
     <string name="product">Produk</string>
     <string name="cart">Cart</string>
     <string name="account">Akun</string>
+    <string name="shooping">Belanja</string>
+    <string name="about">Tentang Ditenun</string>
+    <string name="research">Penelitian</string>
+    <string name="design">Desain Motif</string>
 </resources>

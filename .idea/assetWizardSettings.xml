@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/opt/android-studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/account_circle/baseline_account_circle_24.xml" />
+                                      <entry key="url" value="jar:file:/opt/android-studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/chevron_right/baseline_chevron_right_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="575757" />
-                            <entry key="outputName" value="ic_baseline_account_circle_24" />
+                            <entry key="color" value="a6a6a6" />
+                            <entry key="outputName" value="ic_baseline_chevron_right_24" />
                             <entry key="sourceFile" value="$USER_HOME$/C:\Users\User\Desktop\JhoanRiverS\Ditenun App\classification.svg" />
                           </map>
                         </option>
