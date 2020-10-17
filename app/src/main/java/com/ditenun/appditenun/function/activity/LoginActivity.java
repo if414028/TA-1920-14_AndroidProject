@@ -53,14 +53,13 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         binding.login.setOnClickListener(v -> {
-//            String email = binding.email.getText().toString();
-//            String password = binding.password.getText().toString();
-//            //validate form
-//            if (validateLogin(email, password)) {
-//                //do login
-//                doLogin(email, password);
-//            }
-            startHomeActivity();
+            String email = binding.email.getText().toString();
+            String password = binding.password.getText().toString();
+            //validate form
+            if (validateLogin(email, password)) {
+                //do login
+                doLogin(email, password);
+            }
         });
 
         binding.gotoRegister.setOnClickListener(v -> startRegisterActivity());

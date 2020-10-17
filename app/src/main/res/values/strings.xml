@@ -255,7 +255,7 @@
     <string name="forgot_password">Lupa password?</string>
     <string name="sign_in">Sign In</string>
     <string name="underlines_sign_in"><u>Sign In</u></string>
-    
+
     <!--Register-->
     <string name="register_title">Membuat Akun Baru</string>
     <string name="register_desc">Apakah Anda sudah memiliki akun?</string>
@@ -275,4 +275,8 @@
     <string name="about">Tentang Ditenun</string>
     <string name="research">Penelitian</string>
     <string name="design">Desain Motif</string>
+    <string name="search_product_hint">Cari produk tenun disini</string>
+    <string name="btn_detail_description"><u>Lihat Deskripsi</u></string>
+    <string name="amount">Jumlah</string>
+    <string name="buy">Beli</string>
 </resources>
