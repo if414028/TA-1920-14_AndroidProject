@@ -279,4 +279,21 @@
     <string name="btn_detail_description"><u>Lihat Deskripsi</u></string>
     <string name="amount">Jumlah</string>
     <string name="buy">Beli</string>
+
+    <!--Product-->
+    <string name="new_arrivals">New Aririvals</string>
+    <string name="see_all"><u>See All</u></string>
+    <string name="category">Kategori</string>
+
+    <!--Cart-->
+    <string name="cart_title">Keranjang Belanja</string>
+    <string name="total">TOTAL</string>
+    <string name="checkout">Checkout</string>
+
+    <!--Account-->
+    <string name="account_title">Hi, Tenun</string>
+    <string name="account_subtitle">Selamat datang di Ditenun.</string>
+    <string name="address_title">Alamat</string>
+    <string name="purchase_history">Riwayat Pemesanan</string>
+
 </resources>

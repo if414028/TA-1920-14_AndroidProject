@@ -1,13 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".function.activity.dashboard.account.AccountFragment">
+<layout>
 
-    <TextView
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="This is account" />
+        android:padding="@dimen/_16sdp"
+        tools:context=".function.activity.dashboard.account.AccountFragment">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_username"
+                style="@style/Roboto.SemiBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:text="@string/account_title"
+                android:textSize="@dimen/_16ssp" />
+
+            <TextView
+                android:id="@+id/tv_welcome"
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="@string/account_subtitle" />
+
+            <TextView
+                android:id="@+id/tv_account_type"
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Tenun Tarutung" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="tenun.tarutung@gmail.com" />
+
+            <TextView
+                android:id="@+id/tv_address_title"
+                style="@style/Roboto.SemiBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/address_title"
+                android:textSize="@dimen/_14ssp" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/Roboto.Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="Institut Teknologi Del, Jl. Sisingamangaraja, Sitoluama, Laguboti
+Toba Samosir, 22381
+Indonesia.
+0813-7521-8877" />
+
+            <TextView
+                android:id="@+id/tv_purchase_history"
+                style="@style/Roboto.SemiBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/purchase_history"
+                android:textSize="@dimen/_14ssp" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_button"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                style="@style/Roboto.SemiBold"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

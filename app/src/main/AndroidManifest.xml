@@ -28,7 +28,15 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".function.activity.DetailProductActivity"></activity>
+        <activity
+            android:name=".function.activity.delivery.DeliveryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".function.activity.cart.CartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".function.activity.dashboard.product.DetailProductActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".function.activity.dashboard.DashboardActivity"
             android:theme="@style/AppTheme.NoActionBar" />

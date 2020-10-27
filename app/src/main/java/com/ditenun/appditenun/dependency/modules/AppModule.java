@@ -3,6 +3,7 @@ package com.ditenun.appditenun.dependency.modules;
 import android.app.Application;
 
 import com.ditenun.appditenun.dependency.App;
+import com.ditenun.appditenun.function.activity.cart.CartActivity;
 import com.ditenun.appditenun.function.activity.dashboard.DashboardActivity;
 import com.ditenun.appditenun.function.activity.DetailMotifActivity;
 import com.ditenun.appditenun.function.activity.DetailKristikActivity;
@@ -19,6 +20,7 @@ import com.ditenun.appditenun.function.activity.HomeActivity;
 import com.ditenun.appditenun.function.activity.LoginActivity;
 import com.ditenun.appditenun.function.activity.RegisterActivity;
 import com.ditenun.appditenun.function.activity.SplashscreenActivity;
+import com.ditenun.appditenun.function.activity.dashboard.product.DetailProductActivity;
 import com.ditenun.appditenun.function.fragment.BrowseMotifFragment;
 import com.ditenun.appditenun.function.fragment.MyMotifFragment;
 import com.ditenun.appditenun.function.fragment.NationalMotifFragment;
@@ -52,7 +54,9 @@ import dagger.Provides;
                 DetailKristikActivity.class,
                 EditKristikActivity.class,
                 EditShapeSizeKristikActivity.class,
-                DashboardActivity.class
+                DashboardActivity.class,
+                CartActivity.class,
+                DetailProductActivity.class
         }
 )
 

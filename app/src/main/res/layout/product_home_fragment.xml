@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/_16sdp"
+        tools:context=".function.activity.dashboard.product.ProductHomeFragment">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="@dimen/_4sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp"
+                android:weightSum="5">
+
+                <EditText
+                    android:id="@+id/et_search_product"
+                    style="@style/Roboto.Regular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_weight="4.5"
+                    android:background="@drawable/edittext_rounded_grey_background"
+                    android:drawableStart="@drawable/ic_baseline_search_24"
+                    android:drawableLeft="@drawable/ic_baseline_search_24"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:hint="@string/search_product_hint"
+                    android:padding="@dimen/_8sdp" />
+
+                <ImageView
+                    android:id="@+id/btn_cart"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/icon_cart2" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/image_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_margin="@dimen/_16sdp"
+                    app:indicator_visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/app_bar" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ly_new_arrivals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_new_arrivals"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:text="@string/new_arrivals"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_see_all_new_arrivals"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:layout_marginRight="@dimen/_16sdp"
+                        android:text="@string/see_all"
+                        android:textColor="@color/blue_0757a6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_new_arrivals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_new_arrivals" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ly_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_category"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:text="@string/category"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_see_all_category"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:layout_marginRight="@dimen/_16sdp"
+                        android:text="@string/see_all"
+                        android:textColor="@color/blue_0757a6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_category" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

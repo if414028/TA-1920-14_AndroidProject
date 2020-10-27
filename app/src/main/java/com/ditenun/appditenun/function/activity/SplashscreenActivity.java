@@ -5,6 +5,7 @@ import android.content.Intent;
 import com.ditenun.appditenun.dependency.models.ResponseGenerateFile;
 import com.ditenun.appditenun.dependency.models.ResponseGetFaq;
 import com.ditenun.appditenun.dependency.models.User;
+import com.ditenun.appditenun.function.activity.dashboard.DashboardActivity;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -190,7 +191,7 @@ public class SplashscreenActivity extends AppCompatActivity {
     }
 
     private void startHomeActivity() {
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         startActivity(intent);

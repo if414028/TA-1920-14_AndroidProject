@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".function.activity.DetailProductActivity">
+        tools:context=".function.activity.dashboard.product.DetailProductActivity">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"
@@ -35,7 +35,7 @@
         <ImageView
             android:id="@+id/ly_product_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_300sdp"
+            android:layout_height="@dimen/_200sdp"
             android:background="@color/gray_5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/app_bar" />

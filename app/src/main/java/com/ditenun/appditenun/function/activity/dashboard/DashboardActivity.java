@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ActivityDashboardBinding;
+import com.ditenun.appditenun.function.activity.cart.CartActivity;
 import com.ditenun.appditenun.function.activity.dashboard.account.AccountFragment;
 import com.ditenun.appditenun.function.activity.dashboard.home.DashboardFragment;
 import com.ditenun.appditenun.function.activity.dashboard.product.ProductFragment;
+import com.ditenun.appditenun.function.activity.dashboard.product.ProductHomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import javax.inject.Inject;
@@ -47,11 +50,12 @@ public class DashboardActivity extends AppCompatActivity {
                         break;
                     }
                     case R.id.bottom_nav_product: {
-                        fragment = ProductFragment.newInstance();
+                        fragment = ProductHomeFragment.newInstance();
                         break;
                     }
                     case R.id.bottom_nav_cart:{
-                        Toast.makeText(DashboardActivity.this, "open cart", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), CartActivity.class);
+                        startActivity(intent);
                         break;
                     }
                     case R.id.bottom_nav_account:{

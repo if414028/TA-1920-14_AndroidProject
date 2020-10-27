@@ -40,12 +40,12 @@
                 <ImageView
                     android:id="@+id/btn_cart"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:layout_marginRight="@dimen/_8sdp"
                     android:layout_weight="0.5"
-                    app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+                    android:src="@drawable/icon_cart2"/>
 
             </LinearLayout>
 
