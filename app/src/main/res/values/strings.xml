@@ -296,4 +296,15 @@
     <string name="address_title">Alamat</string>
     <string name="purchase_history">Riwayat Pemesanan</string>
 
+    <!--Payment-->
+    <string name="payment_title">Pembayaran</string>
+    <string name="payment_button">Bayar Sekarang</string>
+    <string name="payment_method_title">Pilih Metode Pembayaran</string>
+    <string name="payment_summary_title">Ringkasan Pemesanan</string>
+    <string name="total_payment">Total Pembayaran</string>
+    <string name="sub_total_payment">Subtotal Produk</string>
+    <string name="voucher_and_promo">Voucher &amp; Promo</string>
+    <string name="shipping_price">Biaya Pengiriman</string>
+    <string name="selected_payment_method">Metode Pembayaran</string>
+
 </resources>

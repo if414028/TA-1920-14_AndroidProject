@@ -77,8 +77,8 @@ public class HomeActivity extends AppCompatActivity  {
     @BindView(R.id.linearLayoutTambahFotooruploadimage)
     LinearLayout linearLayoutTambahFoto;
 
-    @BindView(R.id.linearLayoutDE)
-    LinearLayout linearLayoutDE;
+//    @BindView(R.id.linearLayoutDE)
+//    LinearLayout linearLayoutDE;
 
     @BindView(R.id.linearLayoutKK)
     LinearLayout linearLayoutDK;
@@ -325,53 +325,53 @@ public class HomeActivity extends AppCompatActivity  {
                 startActivity(intent);
             }
         });
-        linearLayoutDE.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-                builder.setTitle("Pilih jenis template");
-
-                LayoutInflater inflater = (LayoutInflater) HomeActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View row = inflater.inflate(R.layout.row_item_template,null);
-                final ListView li = (ListView)row.findViewById(R.id.list_row_item);
-                li.setTextFilterEnabled(true);
-                li.setAdapter(new CustomListAdapter(HomeActivity.this));
-
-                li.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        switch (i){
-                            case 0:
-                                Intent intent1 = new Intent(HomeActivity.this, ChooseBasicSadum.class);
-                                startActivity(intent1);
-                                break;
-                            case 1:
-                                Intent intent2 = new Intent(HomeActivity.this, BM1Activity.class);
-                                startActivity(intent2);
-                                break;
-                            case 2:
-                                Intent intent3 = new Intent(HomeActivity.this,RagiIdupActivity.class);
-                                startActivity(intent3);
-                                break;
-                            case 3:
-                                Intent intent4 = new Intent(HomeActivity.this,MangiringActivity.class);
-                                startActivity(intent4);
-                                break;
-                            case 4:
-                                Intent intent5 = new Intent(HomeActivity.this,CustomActivity.class);
-                                startActivity(intent5);
-                                break;
-
-                        }
-                    }
-                });
-
-                builder.setView(row);
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
+//        linearLayoutDE.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+//                builder.setTitle("Pilih jenis template");
+//
+//                LayoutInflater inflater = (LayoutInflater) HomeActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                View row = inflater.inflate(R.layout.row_item_template,null);
+//                final ListView li = (ListView)row.findViewById(R.id.list_row_item);
+//                li.setTextFilterEnabled(true);
+//                li.setAdapter(new CustomListAdapter(HomeActivity.this));
+//
+//                li.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        switch (i){
+//                            case 0:
+//                                Intent intent1 = new Intent(HomeActivity.this, ChooseBasicSadum.class);
+//                                startActivity(intent1);
+//                                break;
+//                            case 1:
+//                                Intent intent2 = new Intent(HomeActivity.this, BM1Activity.class);
+//                                startActivity(intent2);
+//                                break;
+//                            case 2:
+//                                Intent intent3 = new Intent(HomeActivity.this,RagiIdupActivity.class);
+//                                startActivity(intent3);
+//                                break;
+//                            case 3:
+//                                Intent intent4 = new Intent(HomeActivity.this,MangiringActivity.class);
+//                                startActivity(intent4);
+//                                break;
+//                            case 4:
+//                                Intent intent5 = new Intent(HomeActivity.this,CustomActivity.class);
+//                                startActivity(intent5);
+//                                break;
+//
+//                        }
+//                    }
+//                });
+//
+//                builder.setView(row);
+//
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
+//            }
+//        });
 
         linearLayoutDK.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -413,16 +413,16 @@ public class HomeActivity extends AppCompatActivity  {
         super.onResume();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (backButtonPressTime + TIME_INTERVAL > System.currentTimeMillis()) {
-            moveTaskToBack(true);
-            finish();
-        } else {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.press_once_more_to_exit), Toast.LENGTH_SHORT).show();
-        }
-        backButtonPressTime = System.currentTimeMillis();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (backButtonPressTime + TIME_INTERVAL > System.currentTimeMillis()) {
+//            moveTaskToBack(true);
+//            finish();
+//        } else {
+//            Toast.makeText(getBaseContext(), getResources().getString(R.string.press_once_more_to_exit), Toast.LENGTH_SHORT).show();
+//        }
+//        backButtonPressTime = System.currentTimeMillis();
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

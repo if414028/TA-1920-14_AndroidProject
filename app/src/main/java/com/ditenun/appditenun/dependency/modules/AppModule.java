@@ -21,6 +21,7 @@ import com.ditenun.appditenun.function.activity.LoginActivity;
 import com.ditenun.appditenun.function.activity.RegisterActivity;
 import com.ditenun.appditenun.function.activity.SplashscreenActivity;
 import com.ditenun.appditenun.function.activity.dashboard.product.DetailProductActivity;
+import com.ditenun.appditenun.function.activity.payment.PaymentActivity;
 import com.ditenun.appditenun.function.fragment.BrowseMotifFragment;
 import com.ditenun.appditenun.function.fragment.MyMotifFragment;
 import com.ditenun.appditenun.function.fragment.NationalMotifFragment;
@@ -56,7 +57,8 @@ import dagger.Provides;
                 EditShapeSizeKristikActivity.class,
                 DashboardActivity.class,
                 CartActivity.class,
-                DetailProductActivity.class
+                DetailProductActivity.class,
+                PaymentActivity.class
         }
 )
 
