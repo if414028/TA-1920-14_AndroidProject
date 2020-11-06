@@ -4,8 +4,7 @@ import android.content.Intent;
 
 import com.ditenun.appditenun.dependency.models.ResponseGenerateFile;
 import com.ditenun.appditenun.dependency.models.ResponseGetFaq;
-import com.ditenun.appditenun.dependency.models.User;
-import com.ditenun.appditenun.function.activity.dashboard.DashboardActivity;
+import com.ditenun.appditenun.function.activity.commerce.dashboard.DashboardActivity;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 

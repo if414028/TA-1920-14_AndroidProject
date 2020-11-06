@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray_1"
-        tools:context=".function.activity.commerce.payment.PaymentActivity">
+        tools:context=".function.activity.commerce.track.TrackActivity">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_16sdp"
-                    android:text="@string/payment_title"
+                    android:text="@string/delivery_title"
                     android:textColor="@color/dark_blue" />
 
             </LinearLayout>
@@ -47,7 +47,7 @@
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/ly_payment_summary"
+            app:layout_constraintBottom_toTopOf="@id/ly_track_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/app_bar">
 
@@ -57,11 +57,129 @@
                 android:orientation="vertical"
                 android:padding="@dimen/_16sdp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        style="@style/Roboto.Regular"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/order_number"
+                        android:textColor="@color/dark_blue" />
+
+                    <TextView
+                        android:id="@+id/tv_order_number"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:text="120550"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_blue" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        style="@style/Roboto.Regular"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/transaction_date"
+                        android:textColor="@color/dark_blue" />
+
+                    <TextView
+                        android:id="@+id/transaction_date"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:text="25 Juli 2020"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_blue" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        style="@style/Roboto.Regular"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment_status"
+                        android:textColor="@color/dark_blue" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:text="Pembayaran Diterima"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_blue" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        style="@style/Roboto.Regular"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment_method"
+                        android:textColor="@color/dark_blue" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_method"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:text="Kartu Kredit"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_blue" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@color/gray_3" />
+
                 <TextView
                     style="@style/Roboto.SemiBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/payment_method_title"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:text="@string/ordered_product"
                     android:textColor="@color/dark_blue"
                     android:textSize="@dimen/_12ssp" />
 
@@ -72,17 +190,15 @@
                     android:background="@color/gray_3" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_payment_method"
+                    android:id="@+id/rv_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    tools:itemCount="4"
-                    tools:listitem="@layout/item_payment_method" />
+                    android:layout_marginTop="@dimen/_16sdp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:background="@color/gray_3" />
 
                 <TextView
@@ -90,7 +206,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:text="@string/payment_summary_title"
+                    android:text="@string/delivery_status"
                     android:textColor="@color/dark_blue"
                     android:textSize="@dimen/_12ssp" />
 
@@ -100,147 +216,19 @@
                     android:layout_marginTop="@dimen/_4sdp"
                     android:background="@color/gray_3" />
 
-                <LinearLayout
-                    android:id="@+id/ly_total"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
-
-                    <TextView
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="@string/total_payment"
-                        android:textColor="@color/dark_blue" />
-
-                    <TextView
-                        android:id="@+id/tv_total_price"
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="Rp. 2.790.000,-"
-                        android:textColor="@color/dark_blue" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ly_stub_total"
+                <TextView
+                    android:id="@+id/tv_delivery_status"
+                    style="@style/Roboto.Regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
-
-                    <TextView
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="@string/sub_total_payment"
-                        android:textColor="@color/dark_blue" />
-
-                    <TextView
-                        android:id="@+id/tv_sub_total_price"
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="Rp. 2.790.000,-"
-                        android:textColor="@color/dark_blue" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ly_promo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
-
-                    <TextView
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="@string/voucher_and_promo"
-                        android:textColor="@color/dark_blue" />
-
-                    <TextView
-                        android:id="@+id/tv_promo"
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="-"
-                        android:textColor="@color/dark_blue" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ly_shipping_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
-
-                    <TextView
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="@string/shipping_price"
-                        android:textColor="@color/dark_blue" />
-
-                    <TextView
-                        android:id="@+id/tv_shipping_price"
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="Rp. 40.000,-"
-                        android:textColor="@color/dark_blue" />
-                </LinearLayout>
+                    android:text="Dalam Pengiriman"
+                    android:textColor="@color/dark_blue" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:background="@color/gray_3" />
-
-                <LinearLayout
-                    android:id="@+id/ly_selected_payment_method"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
-
-                    <TextView
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="@string/selected_payment_method"
-                        android:textColor="@color/dark_blue" />
-
-                    <TextView
-                        android:id="@+id/tv_selected_payment_method"
-                        style="@style/Roboto.SemiBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="(Kartu Kredit)"
-                        android:textColor="@color/dark_blue" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
                     android:background="@color/gray_3" />
 
             </LinearLayout>
@@ -248,7 +236,7 @@
         </ScrollView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/ly_payment_summary"
+            android:id="@+id/ly_track_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="@dimen/_4sdp"
@@ -261,36 +249,14 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_16sdp">
 
-                <TextView
-                    android:id="@+id/tv_total_title"
-                    style="@style/Roboto.SemiBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/total"
-                    android:textColor="@color/gray_5"
-                    app:layout_constraintBottom_toTopOf="@id/tv_total_value"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_total_value"
-                    style="@style/Roboto.SemiBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:text="Rp. 2.750.000,-"
-                    android:textColor="@color/dark_blue"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_total_title" />
-
                 <Button
-                    android:id="@+id/btn_pay"
+                    android:id="@+id/btn_track"
+                    style="@style/Roboto.SemiBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_button"
-                    android:padding="@dimen/_8sdp"
-                    android:text="@string/payment_button"
+                    android:text="@string/track_button"
+                    android:textAllCaps="false"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

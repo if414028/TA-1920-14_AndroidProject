@@ -1,4 +1,4 @@
-package com.ditenun.appditenun.function.activity.dashboard.product;
+package com.ditenun.appditenun.function.activity.commerce.dashboard.product;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
@@ -16,8 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ItemCategoryBinding;
@@ -25,8 +23,9 @@ import com.ditenun.appditenun.databinding.ItemNewArrivalsBinding;
 import com.ditenun.appditenun.databinding.ProductHomeFragmentBinding;
 import com.ditenun.appditenun.dependency.models.Category;
 import com.ditenun.appditenun.dependency.models.Product;
-import com.ditenun.appditenun.function.activity.cart.CartActivity;
+import com.ditenun.appditenun.function.activity.commerce.catalogue.DetailProductActivity;
 import com.ditenun.appditenun.function.util.SimpleRecyclerAdapter;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -82,12 +81,11 @@ public class ProductHomeFragment extends Fragment {
         binding.rvNewArrivals.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         newArrivalsAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_new_arrivals, (holder, item) -> {
             ItemNewArrivalsBinding itemBinding = (ItemNewArrivalsBinding) holder.getLayoutBinding();
-            itemBinding.getRoot().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), DetailProductActivity.class);
-                    startActivity(intent);
-                }
+            Picasso.with(getContext()).load(item.getProductImageUrl()).into(itemBinding.imgNewArrivals);
+            itemBinding.getRoot().setOnClickListener(v -> {
+                Intent intent = new Intent(getContext(), DetailProductActivity.class);
+                intent.putExtra("product", item);
+                startActivity(intent);
             });
         });
         binding.rvNewArrivals.setAdapter(newArrivalsAdapter);
@@ -98,6 +96,7 @@ public class ProductHomeFragment extends Fragment {
         binding.rvCategory.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         categoryAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_category, (holder, item) -> {
             ItemCategoryBinding itemBinding = (ItemCategoryBinding) holder.getLayoutBinding();
+            Picasso.with(getContext()).load(item.getCategoryImage()).into(itemBinding.ivCategory);
         });
         binding.rvCategory.setAdapter(categoryAdapter);
         categoryAdapter.setMainData(mViewModel.getCategoryList());

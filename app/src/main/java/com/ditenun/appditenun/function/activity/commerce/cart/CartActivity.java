@@ -1,22 +1,27 @@
-package com.ditenun.appditenun.function.activity.cart;
+package com.ditenun.appditenun.function.activity.commerce.cart;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Parcelable;
 
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ActivityCartBinding;
 import com.ditenun.appditenun.databinding.ItemCartBinding;
 import com.ditenun.appditenun.dependency.models.Product;
+import com.ditenun.appditenun.function.activity.commerce.delivery.DeliveryActivity;
 import com.ditenun.appditenun.function.util.SimpleRecyclerAdapter;
+import com.ditenun.appditenun.function.util.TextUtil;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -30,16 +35,26 @@ public class CartActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_cart);
         viewModel = ViewModelProviders.of(this).get(CartViewModel.class);
 
+        getAdditionalData();
         initLayout();
+        observeLiveData();
+    }
+
+    private void getAdditionalData() {
+        Intent intent = getIntent();
+        if (intent != null) {
+            if (intent.hasExtra("product")) {
+                viewModel.addProduct(intent.getParcelableExtra("product"));
+            }
+        }
     }
 
     private void initLayout() {
         binding.btnBack.setOnClickListener(v -> onBackPressed());
-        binding.btnCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
+        binding.btnCheckout.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), DeliveryActivity.class);
+            intent.putParcelableArrayListExtra("productList", (ArrayList<? extends Parcelable>) viewModel.getProductList());
+            startActivity(intent);
         });
         initCartRecyclerView();
     }
@@ -50,11 +65,17 @@ public class CartActivity extends AppCompatActivity {
             ItemCartBinding itemBinding = (ItemCartBinding) holder.getLayoutBinding();
             itemBinding.tvProductName.setText(item.getProductName());
             itemBinding.tvSize.setText(item.getProductSize());
-            itemBinding.tvPrice.setText(item.getProductPrice().toString());
+            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getProductPrice()));
             itemBinding.etProductQty.setText(item.getProductQty().toString());
-            binding.tvTotalPrice.setText(item.getProductPrice().toString());
+            Picasso.with(getApplicationContext()).load(item.getProductImageUrl()).into(itemBinding.imgProduct);
         });
         binding.rvCart.setAdapter(cartAdapter);
-        cartAdapter.setMainData(viewModel.getProductList());
+    }
+
+    private void observeLiveData() {
+        viewModel.getProductListLiveData().observe(this, products -> {
+            cartAdapter.setMainData(products);
+            binding.tvTotalPrice.setText(TextUtil.getInstance().formatToRp(viewModel.calculateTotalPrice()));
+        });
     }
 }

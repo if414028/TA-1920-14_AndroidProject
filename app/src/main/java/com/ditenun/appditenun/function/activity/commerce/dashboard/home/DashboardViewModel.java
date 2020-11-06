@@ -1,4 +1,4 @@
-package com.ditenun.appditenun.function.activity.dashboard.home;
+package com.ditenun.appditenun.function.activity.commerce.dashboard.home;
 
 import androidx.lifecycle.ViewModel;
 

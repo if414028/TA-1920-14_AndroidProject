@@ -1,4 +1,4 @@
-package com.ditenun.appditenun.function.activity.payment;
+package com.ditenun.appditenun.function.activity.commerce.payment;
 
 import android.app.Application;
 

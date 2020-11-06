@@ -1,14 +1,12 @@
-package com.ditenun.appditenun.function.activity.payment;
+package com.ditenun.appditenun.function.activity.commerce.payment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ActivityPaymentBinding;

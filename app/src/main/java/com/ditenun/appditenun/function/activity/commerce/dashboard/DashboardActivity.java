@@ -1,4 +1,4 @@
-package com.ditenun.appditenun.function.activity.dashboard;
+package com.ditenun.appditenun.function.activity.commerce.dashboard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,15 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ActivityDashboardBinding;
-import com.ditenun.appditenun.function.activity.cart.CartActivity;
-import com.ditenun.appditenun.function.activity.dashboard.account.AccountFragment;
-import com.ditenun.appditenun.function.activity.dashboard.home.DashboardFragment;
-import com.ditenun.appditenun.function.activity.dashboard.product.ProductFragment;
-import com.ditenun.appditenun.function.activity.dashboard.product.ProductHomeFragment;
+import com.ditenun.appditenun.function.activity.commerce.cart.CartActivity;
+import com.ditenun.appditenun.function.activity.commerce.dashboard.account.AccountFragment;
+import com.ditenun.appditenun.function.activity.commerce.dashboard.home.DashboardFragment;
+import com.ditenun.appditenun.function.activity.commerce.dashboard.product.ProductHomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import javax.inject.Inject;

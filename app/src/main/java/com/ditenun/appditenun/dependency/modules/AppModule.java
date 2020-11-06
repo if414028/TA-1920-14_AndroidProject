@@ -3,8 +3,8 @@ package com.ditenun.appditenun.dependency.modules;
 import android.app.Application;
 
 import com.ditenun.appditenun.dependency.App;
-import com.ditenun.appditenun.function.activity.cart.CartActivity;
-import com.ditenun.appditenun.function.activity.dashboard.DashboardActivity;
+import com.ditenun.appditenun.function.activity.commerce.cart.CartActivity;
+import com.ditenun.appditenun.function.activity.commerce.dashboard.DashboardActivity;
 import com.ditenun.appditenun.function.activity.DetailMotifActivity;
 import com.ditenun.appditenun.function.activity.DetailKristikActivity;
 import com.ditenun.appditenun.function.activity.DetailTenunActivity;
@@ -20,8 +20,10 @@ import com.ditenun.appditenun.function.activity.HomeActivity;
 import com.ditenun.appditenun.function.activity.LoginActivity;
 import com.ditenun.appditenun.function.activity.RegisterActivity;
 import com.ditenun.appditenun.function.activity.SplashscreenActivity;
-import com.ditenun.appditenun.function.activity.dashboard.product.DetailProductActivity;
-import com.ditenun.appditenun.function.activity.payment.PaymentActivity;
+import com.ditenun.appditenun.function.activity.commerce.catalogue.DetailProductActivity;
+import com.ditenun.appditenun.function.activity.commerce.delivery.DeliveryActivity;
+import com.ditenun.appditenun.function.activity.commerce.payment.PaymentActivity;
+import com.ditenun.appditenun.function.activity.commerce.track.TrackActivity;
 import com.ditenun.appditenun.function.fragment.BrowseMotifFragment;
 import com.ditenun.appditenun.function.fragment.MyMotifFragment;
 import com.ditenun.appditenun.function.fragment.NationalMotifFragment;
@@ -58,7 +60,9 @@ import dagger.Provides;
                 DashboardActivity.class,
                 CartActivity.class,
                 DetailProductActivity.class,
-                PaymentActivity.class
+                PaymentActivity.class,
+                DeliveryActivity.class,
+                TrackActivity.class
         }
 )
 

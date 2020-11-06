@@ -6,8 +6,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gray_1"
         android:paddingBottom="@dimen/_16sdp"
-        tools:context=".function.activity.dashboard.product.ProductHomeFragment">
+        tools:context=".function.activity.commerce.dashboard.product.ProductHomeFragment">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"

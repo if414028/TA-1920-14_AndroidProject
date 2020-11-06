@@ -11,6 +11,7 @@ public class Product implements Parcelable {
     private Double productPrice;
     private Integer productQty;
     private String productImageUrl;
+    private String productDescription;
 
     public Product(){ }
 
@@ -29,6 +30,7 @@ public class Product implements Parcelable {
             productQty = in.readInt();
         }
         productImageUrl = in.readString();
+        productDescription = in.readString();
     }
 
     @Override
@@ -49,6 +51,7 @@ public class Product implements Parcelable {
             dest.writeInt(productQty);
         }
         dest.writeString(productImageUrl);
+        dest.writeString(productDescription);
     }
 
     @Override
@@ -114,5 +117,13 @@ public class Product implements Parcelable {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 }

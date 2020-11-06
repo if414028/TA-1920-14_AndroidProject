@@ -6,12 +6,14 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".function.activity.cart.CartActivity">
+        android:background="@color/gray_1"
+        tools:context=".function.activity.commerce.cart.CartActivity">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardElevation="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="@color/gray_1"
         android:orientation="vertical"
-        tools:context=".function.activity.dashboard.home.DashboardFragment">
+        tools:context=".function.activity.commerce.dashboard.home.DashboardFragment">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"

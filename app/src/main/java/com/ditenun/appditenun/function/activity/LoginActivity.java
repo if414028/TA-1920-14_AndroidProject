@@ -5,7 +5,7 @@ import android.content.Intent;
 import com.ditenun.appditenun.databinding.ActivityLoginBinding;
 import com.ditenun.appditenun.dependency.models.ResponseGetUser;
 import com.ditenun.appditenun.dependency.modules.APIModule;
-import com.ditenun.appditenun.function.activity.dashboard.DashboardActivity;
+import com.ditenun.appditenun.function.activity.commerce.dashboard.DashboardActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;

@@ -1,9 +1,10 @@
-package com.ditenun.appditenun.function.activity.cart;
+package com.ditenun.appditenun.function.activity.commerce.cart;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 
 import com.ditenun.appditenun.dependency.models.Product;
 import com.ditenun.appditenun.dependency.network.TenunNetworkInterface;
@@ -20,24 +21,30 @@ public class CartViewModel extends AndroidViewModel {
 
     private Double totalPrice;
     private List<Product> productList = new ArrayList<>();
+    private MutableLiveData<List<Product>> productListLiveData = new MutableLiveData<>();
 
     public CartViewModel(@NonNull Application application) {
         super(application);
-
-        setupProductList();
     }
 
-    private void setupProductList(){
-        Product product = new Product();
-        product.setProductName("Ulos Mangiring");
-        product.setProductCode("1");
-        product.setProductSize("Free Size");
-        product.setProductPrice(1350000.0);
-        product.setProductQty(2);
-        productList.add(product);
+    public void addProduct(Product product) {
+        this.productList.add(product);
+        productListLiveData.postValue(productList);
+    }
+
+    public Double calculateTotalPrice() {
+        Double totalPrice = 0.0;
+        for (Product item : productList) {
+            totalPrice += (item.getProductPrice() * item.getProductQty());
+        }
+        return totalPrice;
     }
 
     public List<Product> getProductList() {
         return productList;
+    }
+
+    public MutableLiveData<List<Product>> getProductListLiveData() {
+        return productListLiveData;
     }
 }

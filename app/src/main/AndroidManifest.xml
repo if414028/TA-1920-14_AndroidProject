@@ -28,19 +28,21 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".function.activity.payment.PaymentActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".function.activity.commerce.track.TrackActivity"></activity>
         <activity
-            android:name=".function.activity.delivery.DeliveryActivity"
+            android:name=".function.activity.commerce.payment.PaymentActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".function.activity.cart.CartActivity"
+            android:name=".function.activity.commerce.delivery.DeliveryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".function.activity.dashboard.product.DetailProductActivity"
+            android:name=".function.activity.commerce.cart.CartActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".function.activity.dashboard.DashboardActivity"
+            android:name=".function.activity.commerce.catalogue.DetailProductActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".function.activity.commerce.dashboard.DashboardActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".function.activity.KlasifikasiulosActivity" />
         <activity android:name=".function.activity.VerifikasiuloasActivity" />

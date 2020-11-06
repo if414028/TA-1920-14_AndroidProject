@@ -6,7 +6,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".function.activity.dashboard.product.ProductFragment">
+        android:background="@color/gray_1"
+        tools:context=".function.activity.commerce.dashboard.product.ProductFragment">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"
@@ -45,7 +46,7 @@
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:layout_marginRight="@dimen/_8sdp"
                     android:layout_weight="0.5"
-                    android:src="@drawable/icon_cart2"/>
+                    android:src="@drawable/icon_cart2" />
 
             </LinearLayout>
 
@@ -97,9 +98,9 @@
             android:id="@+id/rv_product"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ly_title"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/ly_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
