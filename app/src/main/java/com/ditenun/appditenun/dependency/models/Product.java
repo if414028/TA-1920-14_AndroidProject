@@ -3,55 +3,70 @@ package com.ditenun.appditenun.dependency.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 public class Product implements Parcelable {
 
-    private String productCode;
-    private String productName;
-    private String productSize;
-    private Double productPrice;
-    private Integer productQty;
-    private String productImageUrl;
-    private String productDescription;
+    private Integer id;
+    private String name;
+    private Double price;
+    private String description;
+    private String dimension;
+    private String feature;
+    private List<String> imageUrls;
+    private Integer qty;
 
-    public Product(){ }
+    public Product() {
+    }
 
     protected Product(Parcel in) {
-        productCode = in.readString();
-        productName = in.readString();
-        productSize = in.readString();
         if (in.readByte() == 0) {
-            productPrice = null;
+            id = null;
         } else {
-            productPrice = in.readDouble();
+            id = in.readInt();
         }
+        name = in.readString();
         if (in.readByte() == 0) {
-            productQty = null;
+            price = null;
         } else {
-            productQty = in.readInt();
+            price = in.readDouble();
         }
-        productImageUrl = in.readString();
-        productDescription = in.readString();
+        description = in.readString();
+        dimension = in.readString();
+        feature = in.readString();
+        imageUrls = in.createStringArrayList();
+        if (in.readByte() == 0) {
+            qty = null;
+        } else {
+            qty = in.readInt();
+        }
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(productCode);
-        dest.writeString(productName);
-        dest.writeString(productSize);
-        if (productPrice == null) {
+        if (id == null) {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeDouble(productPrice);
+            dest.writeInt(id);
         }
-        if (productQty == null) {
+        dest.writeString(name);
+        if (price == null) {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeInt(productQty);
+            dest.writeDouble(price);
         }
-        dest.writeString(productImageUrl);
-        dest.writeString(productDescription);
+        dest.writeString(description);
+        dest.writeString(dimension);
+        dest.writeString(feature);
+        dest.writeStringList(imageUrls);
+        if (qty == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(qty);
+        }
     }
 
     @Override
@@ -71,59 +86,67 @@ public class Product implements Parcelable {
         }
     };
 
-    public String getProductCode() {
-        return productCode;
+    public Integer getId() {
+        return id;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getProductSize() {
-        return productSize;
+    public String getName() {
+        return name;
     }
 
-    public void setProductSize(String productSize) {
-        this.productSize = productSize;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Double getProductPrice() {
-        return productPrice;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setProductPrice(Double productPrice) {
-        this.productPrice = productPrice;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public Integer getProductQty() {
-        return productQty;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProductQty(Integer productQty) {
-        this.productQty = productQty;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getProductImageUrl() {
-        return productImageUrl;
+    public String getDimension() {
+        return dimension;
     }
 
-    public void setProductImageUrl(String productImageUrl) {
-        this.productImageUrl = productImageUrl;
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getFeature() {
+        return feature;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setFeature(String feature) {
+        this.feature = feature;
     }
 
-    public String getProductDescription() {
-        return productDescription;
+    public List<String> getImageUrls() {
+        return imageUrls;
     }
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+    public Integer getQty() {
+        return qty;
+    }
+
+    public void setQty(Integer qty) {
+        this.qty = qty;
     }
 }

@@ -60,10 +60,10 @@ public class DeliveryActivity extends AppCompatActivity {
         productAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_order, (holder, item) -> {
 
             ItemOrderBinding itemBinding = (ItemOrderBinding) holder.getLayoutBinding();
-            itemBinding.tvProductName.setText(item.getProductName());
-            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getProductPrice()));
-            itemBinding.tvSubTotalPrice.setText("Total: " + TextUtil.getInstance().formatToRp(item.getProductPrice() * item.getProductQty()));
-            Picasso.with(getApplicationContext()).load(item.getProductImageUrl()).into(itemBinding.imgProduct);
+            itemBinding.tvProductName.setText(item.getName());
+            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getPrice()));
+            itemBinding.tvSubTotalPrice.setText("Total: " + TextUtil.getInstance().formatToRp(item.getPrice() * item.getQty()));
+            Picasso.with(getApplicationContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgProduct);
         });
         binding.rvOrder.setAdapter(productAdapter);
         productAdapter.setMainData(viewModel.getProductList());

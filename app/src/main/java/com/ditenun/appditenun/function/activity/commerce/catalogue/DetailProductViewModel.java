@@ -22,22 +22,22 @@ public class DetailProductViewModel extends AndroidViewModel {
 
     public void increaseProductQty() {
         Product product = productLiveData.getValue();
-        if (product != null && product.getProductQty() != null) {
-            int currentQty = product.getProductQty();
+        if (product != null && product.getQty() != null) {
+            int currentQty = product.getQty();
             int resultQty = currentQty + 1;
-            product.setProductQty(resultQty);
+            product.setQty(resultQty);
             productLiveData.postValue(product);
         }
     }
 
     public void decreaseProductQty() {
         Product product = productLiveData.getValue();
-        if (product != null && product.getProductQty() != null) {
-            int currentQty = product.getProductQty();
+        if (product != null && product.getQty() != null) {
+            int currentQty = product.getQty();
             int resultQty;
             if (currentQty > 1) resultQty = currentQty - 1;
             else resultQty = 1;
-            product.setProductQty(resultQty);
+            product.setQty(resultQty);
             productLiveData.postValue(product);
         }
     }

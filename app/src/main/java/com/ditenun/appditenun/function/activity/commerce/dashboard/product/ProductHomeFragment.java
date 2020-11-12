@@ -1,6 +1,7 @@
 package com.ditenun.appditenun.function.activity.commerce.dashboard.product;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -25,6 +26,8 @@ import com.ditenun.appditenun.dependency.models.Category;
 import com.ditenun.appditenun.dependency.models.Product;
 import com.ditenun.appditenun.function.activity.commerce.catalogue.DetailProductActivity;
 import com.ditenun.appditenun.function.util.SimpleRecyclerAdapter;
+import com.ditenun.appditenun.function.util.TextUtil;
+import com.google.firebase.database.DatabaseError;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -45,6 +48,7 @@ public class ProductHomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel = ViewModelProviders.of(getActivity()).get(ProductHomeViewModel.class);
+        mViewModel.fetchAllProduct();
     }
 
     @Override
@@ -53,6 +57,7 @@ public class ProductHomeFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.product_home_fragment, container, false);
 
         initLayout();
+        observeLiveEvent();
 
         return binding.getRoot();
     }
@@ -81,7 +86,13 @@ public class ProductHomeFragment extends Fragment {
         binding.rvNewArrivals.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         newArrivalsAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_new_arrivals, (holder, item) -> {
             ItemNewArrivalsBinding itemBinding = (ItemNewArrivalsBinding) holder.getLayoutBinding();
-            Picasso.with(getContext()).load(item.getProductImageUrl()).into(itemBinding.imgNewArrivals);
+            if (item != null){
+                if (item.getImageUrls() != null){
+                    Picasso.with(getContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgNewArrivals);
+                }
+            }
+            itemBinding.tvProductName.setText(item.getName());
+            itemBinding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(item.getPrice()));
             itemBinding.getRoot().setOnClickListener(v -> {
                 Intent intent = new Intent(getContext(), DetailProductActivity.class);
                 intent.putExtra("product", item);
@@ -89,7 +100,6 @@ public class ProductHomeFragment extends Fragment {
             });
         });
         binding.rvNewArrivals.setAdapter(newArrivalsAdapter);
-        newArrivalsAdapter.setMainData(mViewModel.getNewArrivalsProductList());
     }
 
     private void initCategoryRecyclerView() {
@@ -102,4 +112,13 @@ public class ProductHomeFragment extends Fragment {
         categoryAdapter.setMainData(mViewModel.getCategoryList());
     }
 
+    private void observeLiveEvent() {
+        mViewModel.getSuccessGetListProductEvent().observe(this, aVoid -> {
+            newArrivalsAdapter.setMainData(mViewModel.getNewArrivalsProductList());
+            newArrivalsAdapter.notifyDataSetChanged();
+        });
+        mViewModel.getErrorGetListProductEvent().observe(this, databaseError -> {
+            //error when fetch data
+        });
+    }
 }

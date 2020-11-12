@@ -8,6 +8,13 @@ import androidx.lifecycle.AndroidViewModel;
 import com.ditenun.appditenun.dependency.models.Category;
 import com.ditenun.appditenun.dependency.models.Product;
 import com.ditenun.appditenun.dependency.network.TenunNetworkInterface;
+import com.ditenun.appditenun.function.util.SingleLiveEvent;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,58 +23,53 @@ import javax.inject.Inject;
 
 public class ProductHomeViewModel extends AndroidViewModel {
 
+    private FirebaseDatabase rootDatabase;
+    private DatabaseReference reference;
+
     @Inject
     TenunNetworkInterface tenunNetworkInterface;
 
+    private SingleLiveEvent<Void> successGetListProductEvent = new SingleLiveEvent<>();
+    private SingleLiveEvent<DatabaseError> errorGetListProductEvent = new SingleLiveEvent<>();
     private List<Product> newArrivalsProductList = new ArrayList<>();
     private List<Category> categoryList = new ArrayList<>();
 
-    public ProductHomeViewModel(@NonNull Application application) {
-        super(application);
-        setupListNewArrivals();
-        setupCategoryList();
+    public void fetchAllProduct() {
+        rootDatabase = FirebaseDatabase.getInstance();
+        reference = rootDatabase.getReference("products");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()) {
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        Product product = child.getValue(Product.class);
+                        List<String> imageUrls = new ArrayList<>();
+                        if (product != null) {
+                            for (String imageUrl : product.getImageUrls()) {
+                                if (imageUrl != null) {
+                                    imageUrls.add(imageUrl);
+                                }
+                            }
+                            product.setImageUrls(imageUrls);
+                            product.setQty(0);
+                            newArrivalsProductList.add(product);
+                        }
+                    }
+                }
+                successGetListProductEvent.callFromBackgroundThread();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                errorGetListProductEvent.postValue(databaseError);
+            }
+        });
+
     }
 
-    private void setupListNewArrivals() {
-        Product product1 = new Product();
-        product1.setProductName("Ulos Mangiring");
-        product1.setProductCode("1");
-        product1.setProductSize("Free Size");
-        product1.setProductPrice(1350000.0);
-        product1.setProductQty(1);
-        product1.setProductImageUrl("https://picsum.photos/id/104/200/300");
-        product1.setProductDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-        newArrivalsProductList.add(product1);
-
-        Product product2 = new Product();
-        product2.setProductName("Ulos Mangiring");
-        product2.setProductCode("1");
-        product2.setProductSize("Free Size");
-        product2.setProductPrice(1350000.0);
-        product2.setProductQty(1);
-        product2.setProductDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-        product2.setProductImageUrl("https://picsum.photos/id/177/200/300");
-        newArrivalsProductList.add(product2);
-
-        Product product3 = new Product();
-        product3.setProductName("Ulos Mangiring");
-        product3.setProductCode("1");
-        product3.setProductSize("Free Size");
-        product3.setProductPrice(1350000.0);
-        product3.setProductQty(1);
-        product3.setProductDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-        product3.setProductImageUrl("https://picsum.photos/id/1083/200/300");
-        newArrivalsProductList.add(product3);
-
-        Product product4 = new Product();
-        product4.setProductName("Ulos Mangiring");
-        product4.setProductCode("1");
-        product4.setProductSize("Free Size");
-        product4.setProductPrice(1350000.0);
-        product4.setProductQty(1);
-        product4.setProductDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-        product4.setProductImageUrl("https://picsum.photos/id/26/200/300");
-        newArrivalsProductList.add(product4);
+    public ProductHomeViewModel(@NonNull Application application) {
+        super(application);
+        setupCategoryList();
     }
 
     private void setupCategoryList() {
@@ -102,5 +104,13 @@ public class ProductHomeViewModel extends AndroidViewModel {
 
     public List<Category> getCategoryList() {
         return categoryList;
+    }
+
+    public SingleLiveEvent<Void> getSuccessGetListProductEvent() {
+        return successGetListProductEvent;
+    }
+
+    public SingleLiveEvent<DatabaseError> getErrorGetListProductEvent() {
+        return errorGetListProductEvent;
     }
 }

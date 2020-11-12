@@ -59,7 +59,7 @@ public class ProductDescriptionFragment extends DialogFragment {
         viewModel.getProduct().observe(this, new Observer<Product>() {
             @Override
             public void onChanged(Product product) {
-                binding.tvProductDescription.setText(product.getProductDescription());
+                binding.tvProductDescription.setText(product.getDescription());
             }
         });
     }

@@ -101,7 +101,8 @@
     <color name="blue_0757a6">#0757a6</color>
     <color name="grey_aaaaaa">#AAAAAA</color>
     <color name="grey_dadada">#DADADA</color>
-    <color name="transparent">#00000000</color>
+    <color name="transparent">#e6ffffff</color>
+    <color name="transparent_dark">#CC333333</color>
     <color name="blue_358ed7">#358ed7</color>
     <color name="gray_1">#f7f7f7</color>
     <color name="gray_2">#e5e5ea</color>

@@ -63,11 +63,11 @@ public class CartActivity extends AppCompatActivity {
         binding.rvCart.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
         cartAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_cart, (holder, item) -> {
             ItemCartBinding itemBinding = (ItemCartBinding) holder.getLayoutBinding();
-            itemBinding.tvProductName.setText(item.getProductName());
-            itemBinding.tvSize.setText(item.getProductSize());
-            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getProductPrice()));
-            itemBinding.etProductQty.setText(item.getProductQty().toString());
-            Picasso.with(getApplicationContext()).load(item.getProductImageUrl()).into(itemBinding.imgProduct);
+            itemBinding.tvProductName.setText(item.getName());
+            itemBinding.tvSize.setText(item.getFeature());
+            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getPrice()));
+            itemBinding.etProductQty.setText(item.getQty().toString());
+            Picasso.with(getApplicationContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgProduct);
         });
         binding.rvCart.setAdapter(cartAdapter);
     }

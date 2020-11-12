@@ -62,10 +62,10 @@ public class DetailProductActivity extends AppCompatActivity {
         viewModel.getProduct().observe(this, new Observer<Product>() {
             @Override
             public void onChanged(Product product) {
-                Picasso.with(getApplicationContext()).load(product.getProductImageUrl()).into(binding.lyProductImage);
-                binding.tvProductName.setText(product.getProductName());
-                binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(product.getProductPrice()));
-                binding.tvProductQty.setText(product.getProductQty().toString());
+                Picasso.with(getApplicationContext()).load(product.getImageUrls().get(0)).into(binding.lyProductImage);
+                binding.tvProductName.setText(product.getName());
+                binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(product.getPrice()));
+                binding.tvProductQty.setText(product.getQty().toString());
             }
         });
     }
