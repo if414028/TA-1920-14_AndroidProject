@@ -2,21 +2,27 @@ package com.ditenun.appditenun.function.activity.commerce.delivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ActivityDeliveryBinding;
 import com.ditenun.appditenun.databinding.ItemOrderBinding;
 import com.ditenun.appditenun.dependency.models.Product;
+import com.ditenun.appditenun.function.activity.commerce.catalogue.ProductDescriptionFragment;
 import com.ditenun.appditenun.function.activity.commerce.payment.PaymentActivity;
 import com.ditenun.appditenun.function.util.SimpleRecyclerAdapter;
 import com.ditenun.appditenun.function.util.TextUtil;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -35,6 +41,7 @@ public class DeliveryActivity extends AppCompatActivity {
 
         getAdditionalData();
         initLayout();
+        observeLiveEvent();
     }
 
     private void getAdditionalData() {
@@ -52,6 +59,14 @@ public class DeliveryActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
             startActivity(intent);
         });
+        binding.etDeliveryAddress.setOnClickListener(view -> {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            AddAddressFragment addAddressFragment = new AddAddressFragment();
+            addAddressFragment.show(fragmentManager, "add_address_fragment");
+        });
+        binding.tvTotalOrder.setText(TextUtil.getInstance().formatToRp(viewModel.calculateTotalOrderPrice()));
+        binding.tvTotalPayment.setText(TextUtil.getInstance().formatToRp(viewModel.calculateNettTotalPrice()));
+        binding.tvTotalValue.setText(TextUtil.getInstance().formatToRp(viewModel.calculateNettTotalPrice()));
         initProductRecyclerView();
     }
 
@@ -67,5 +82,14 @@ public class DeliveryActivity extends AppCompatActivity {
         });
         binding.rvOrder.setAdapter(productAdapter);
         productAdapter.setMainData(viewModel.getProductList());
+    }
+
+    private void observeLiveEvent() {
+        viewModel.getSubmitAddressEvent().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.etDeliveryAddress.setText(s);
+            }
+        });
     }
 }

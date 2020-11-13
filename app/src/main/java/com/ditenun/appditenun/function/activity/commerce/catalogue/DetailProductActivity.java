@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ActivityDetailProductBinding;
 import com.ditenun.appditenun.dependency.models.Product;
@@ -59,14 +61,19 @@ public class DetailProductActivity extends AppCompatActivity {
     }
 
     private void observeLiveData() {
-        viewModel.getProduct().observe(this, new Observer<Product>() {
-            @Override
-            public void onChanged(Product product) {
-                Picasso.with(getApplicationContext()).load(product.getImageUrls().get(0)).into(binding.lyProductImage);
-                binding.tvProductName.setText(product.getName());
-                binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(product.getPrice()));
-                binding.tvProductQty.setText(product.getQty().toString());
+        viewModel.getProduct().observe(this, product -> {
+            for (String imageUrl : product.getImageUrls()) {
+                if (imageUrl != null) {
+                    TextSliderView textSliderView = new TextSliderView(getApplicationContext());
+                    textSliderView.image(imageUrl).setScaleType(BaseSliderView.ScaleType.CenterCrop);
+                    binding.lyProductImage.addSlider(textSliderView);
+                }
             }
+            binding.etSize.setText(product.getDimension());
+            binding.tvProductNameAppBar.setText(product.getName());
+            binding.tvProductName.setText(product.getName());
+            binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(product.getPrice()));
+            binding.tvProductQty.setText(product.getQty().toString());
         });
     }
 }

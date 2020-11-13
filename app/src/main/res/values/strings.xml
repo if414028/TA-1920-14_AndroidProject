@@ -326,5 +326,8 @@
     <string name="delivery_status">Status Pengiriman</string>
     <string name="track_button">Lacak</string>
     <string name="ordered_product">Produk Pesanan</string>
+    <string name="enter_address">Alamat Pengiriman</string>
+    <string name="enter_address_hint">Masukkan alamat pengiriman anda</string>
+    <string name="enter_address_btn">Pilih Alamat</string>
 
 </resources>

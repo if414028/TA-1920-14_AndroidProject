@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -77,8 +76,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@color/transparent"
-                    android:text="this is sample address"
+                    android:background="@color/gray_1"
+                    android:editable="false"
+                    android:hint="@string/enter_address_hint"
                     android:textColor="@color/dark_blue" />
 
                 <View
@@ -233,6 +233,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="-"
+                        android:textAlignment="textEnd"
+                        android:gravity="end"
                         android:textColor="@color/dark_blue" />
                 </LinearLayout>
 
@@ -259,7 +261,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_weight="2"
-                        android:text="Rp. 40.000,-"
+                        android:text="-"
                         android:textAlignment="textEnd"
                         android:textColor="@color/dark_blue" />
                 </LinearLayout>

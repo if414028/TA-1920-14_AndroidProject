@@ -33,6 +33,7 @@ public class ProductHomeViewModel extends AndroidViewModel {
     private SingleLiveEvent<DatabaseError> errorGetListProductEvent = new SingleLiveEvent<>();
     private List<Product> newArrivalsProductList = new ArrayList<>();
     private List<Category> categoryList = new ArrayList<>();
+    private boolean isDataFetched;
 
     public void fetchAllProduct() {
         rootDatabase = FirebaseDatabase.getInstance();
@@ -51,12 +52,13 @@ public class ProductHomeViewModel extends AndroidViewModel {
                                 }
                             }
                             product.setImageUrls(imageUrls);
-                            product.setQty(0);
+                            product.setQty(1);
                             newArrivalsProductList.add(product);
                         }
                     }
                 }
                 successGetListProductEvent.callFromBackgroundThread();
+                isDataFetched = true;
             }
 
             @Override
@@ -64,12 +66,15 @@ public class ProductHomeViewModel extends AndroidViewModel {
                 errorGetListProductEvent.postValue(databaseError);
             }
         });
-
     }
 
     public ProductHomeViewModel(@NonNull Application application) {
         super(application);
         setupCategoryList();
+    }
+
+    public void clearProductList(){
+        this.newArrivalsProductList.clear();
     }
 
     private void setupCategoryList() {

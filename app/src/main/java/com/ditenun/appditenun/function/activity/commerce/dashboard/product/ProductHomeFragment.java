@@ -48,7 +48,6 @@ public class ProductHomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel = ViewModelProviders.of(getActivity()).get(ProductHomeViewModel.class);
-        mViewModel.fetchAllProduct();
     }
 
     @Override
@@ -60,6 +59,13 @@ public class ProductHomeFragment extends Fragment {
         observeLiveEvent();
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.clearProductList();
+        mViewModel.fetchAllProduct();
     }
 
     private void initLayout() {
@@ -86,8 +92,8 @@ public class ProductHomeFragment extends Fragment {
         binding.rvNewArrivals.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         newArrivalsAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_new_arrivals, (holder, item) -> {
             ItemNewArrivalsBinding itemBinding = (ItemNewArrivalsBinding) holder.getLayoutBinding();
-            if (item != null){
-                if (item.getImageUrls() != null){
+            if (item != null) {
+                if (item.getImageUrls() != null) {
                     Picasso.with(getContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgNewArrivals);
                 }
             }
@@ -116,9 +122,10 @@ public class ProductHomeFragment extends Fragment {
         mViewModel.getSuccessGetListProductEvent().observe(this, aVoid -> {
             newArrivalsAdapter.setMainData(mViewModel.getNewArrivalsProductList());
             newArrivalsAdapter.notifyDataSetChanged();
+            binding.progressBar.setVisibility(View.GONE);
         });
         mViewModel.getErrorGetListProductEvent().observe(this, databaseError -> {
-            //error when fetch data
+            binding.progressBar.setVisibility(View.GONE);
         });
     }
 }

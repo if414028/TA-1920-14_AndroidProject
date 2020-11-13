@@ -1,4 +1,4 @@
-package com.ditenun.appditenun.function.activity.commerce.catalogue;
+package com.ditenun.appditenun.function.activity.commerce.delivery;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -10,17 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.ditenun.appditenun.R;
-import com.ditenun.appditenun.databinding.FragmentProductDescriptionBinding;
-import com.ditenun.appditenun.dependency.models.Product;
+import com.ditenun.appditenun.databinding.FragmentAddAddressBinding;
 
-public class ProductDescriptionFragment extends DialogFragment {
+public class AddAddressFragment extends DialogFragment {
 
-    private DetailProductViewModel viewModel;
-    private FragmentProductDescriptionBinding binding;
+    private FragmentAddAddressBinding binding;
+    private DeliveryViewModel viewModel;
 
     @Override
     public void onStart() {
@@ -38,30 +36,26 @@ public class ProductDescriptionFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NO_FRAME, R.style.filterDialogTheme);
-        viewModel = ViewModelProviders.of(getActivity()).get(DetailProductViewModel.class);
+        viewModel = ViewModelProviders.of(getActivity()).get(DeliveryViewModel.class);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_description, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_address, container, false);
 
         initLayout();
-        observeLiveData();
 
         return binding.getRoot();
     }
 
     private void initLayout() {
         binding.btnBack.setOnClickListener(view -> dismiss());
-    }
-
-    private void observeLiveData() {
-        viewModel.getProduct().observe(this, new Observer<Product>() {
-            @Override
-            public void onChanged(Product product) {
-                binding.tvProductDescription.setText(product.getDescription());
-            }
+        binding.etAddress.setText(viewModel.getAddress());
+        binding.btnSubmit.setOnClickListener(view -> {
+            String address = binding.etAddress.getText().toString();
+            viewModel.submitAddress(address);
+            dismiss();
         });
     }
 }
