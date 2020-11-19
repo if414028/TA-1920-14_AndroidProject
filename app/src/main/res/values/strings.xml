@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">DiTenun</string>
+    <string name="google_maps_key">AIzaSyCGVF3r9qovAhJ6ZPtU1C_N3thJ4_Th2Ko</string>
 
     <!-- tab title -->
     <string name="tab_home_text">Beranda</string>
@@ -329,5 +330,9 @@
     <string name="enter_address">Alamat Pengiriman</string>
     <string name="enter_address_hint">Masukkan alamat pengiriman anda</string>
     <string name="enter_address_btn">Pilih Alamat</string>
+
+    <!--Module-->
+    <string name="ecommerce_module">Shop</string>
+    <string name="design_module">Desain \nMotif</string>
 
 </resources>

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.ditenun.appditenun.dependency.models.Product;
 import com.ditenun.appditenun.function.util.SingleLiveEvent;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class DeliveryViewModel extends AndroidViewModel {
     private String address;
     private double shippingPrice;
     private double promo;
+    private LatLng currentPosition;
 
     private SingleLiveEvent<String> submitAddressEvent = new SingleLiveEvent<>();
 
@@ -60,5 +62,13 @@ public class DeliveryViewModel extends AndroidViewModel {
 
     public SingleLiveEvent<String> getSubmitAddressEvent() {
         return submitAddressEvent;
+    }
+
+    public void setCurrentPosition(LatLng currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
+    public LatLng getCurrentPosition() {
+        return currentPosition;
     }
 }

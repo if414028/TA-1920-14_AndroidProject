@@ -145,4 +145,9 @@ dependencies {
     def archLifeCycleVersion = '2.2.0'
     implementation "android.arch.lifecycle:extensions:$archLifeCycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$archLifeCycleVersion"
+
+    //Map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
 }

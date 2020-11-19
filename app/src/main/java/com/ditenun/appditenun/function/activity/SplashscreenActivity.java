@@ -141,11 +141,12 @@ public class SplashscreenActivity extends AppCompatActivity {
                     realm.executeTransactionAsync(realm4 -> realm4.insertOrUpdate(response.body().getData()));
                     realm.commitTransaction();
 
-                    if(sp.getBoolean("logged", true)){
-                        startHomeActivity();
-                    } else {
-                        startLoginActivity();
-                    }
+//                    if(sp.getBoolean("logged", true)){
+//                        startHomeActivity();
+//                    } else {
+//                        startLoginActivity();
+//                    }
+                    startHomeActivity();
                 }
             }
 
@@ -190,7 +191,7 @@ public class SplashscreenActivity extends AppCompatActivity {
     }
 
     private void startHomeActivity() {
-        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ModuleSelectionActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         startActivity(intent);
