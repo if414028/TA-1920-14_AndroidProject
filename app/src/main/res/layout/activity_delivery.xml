@@ -42,7 +42,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -107,6 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:itemCount="1"
+                    android:nestedScrollingEnabled="false"
                     tools:listitem="@layout/item_order" />
 
                 <View
@@ -134,8 +135,9 @@
                     android:id="@+id/rv_delivery_method"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
                     tools:itemCount="2"
-                    tools:listitem="@layout/item_payment_method" />
+                    tools:listitem="@layout/item_shipping_method" />
 
                 <TextView
                     style="@style/Roboto.SemiBold"
@@ -143,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:text="@string/voucher_and_promo"
+                    android:visibility="gone"
                     android:textColor="@color/dark_blue"
                     android:textSize="@dimen/_12ssp" />
 
@@ -150,6 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginTop="@dimen/_4sdp"
+                    android:visibility="gone"
                     android:background="@color/gray_3" />
 
                 <TextView
@@ -158,6 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
+                    android:visibility="gone"
                     android:text="Pakai voucher / promo"
                     android:textColor="@color/dark_blue" />
 
@@ -296,7 +301,7 @@
 
             </LinearLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/ly_payment_summary"
@@ -340,6 +345,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_button"
+                    android:enabled="false"
                     android:padding="@dimen/_8sdp"
                     android:text="@string/next_button"
                     android:textColor="@color/white"

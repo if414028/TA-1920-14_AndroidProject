@@ -35,17 +35,21 @@ public class CartActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_cart);
         viewModel = ViewModelProviders.of(this).get(CartViewModel.class);
 
-        getAdditionalData();
         initLayout();
         observeLiveData();
+        getAdditionalData();
     }
 
     private void getAdditionalData() {
         Intent intent = getIntent();
         if (intent != null) {
-            if (intent.hasExtra("product")) {
-                viewModel.addProduct(intent.getParcelableExtra("product"));
+            if (intent.hasExtra("order")) {
+                viewModel.setOrder(intent.getParcelableExtra("order"));
+            } else {
+                binding.btnCheckout.setEnabled(false);
             }
+        } else {
+            binding.btnCheckout.setEnabled(false);
         }
     }
 
@@ -53,7 +57,7 @@ public class CartActivity extends AppCompatActivity {
         binding.btnBack.setOnClickListener(v -> onBackPressed());
         binding.btnCheckout.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), DeliveryActivity.class);
-            intent.putParcelableArrayListExtra("productList", (ArrayList<? extends Parcelable>) viewModel.getProductList());
+            intent.putExtra("order", viewModel.getOrder());
             startActivity(intent);
         });
         initCartRecyclerView();
@@ -73,9 +77,10 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void observeLiveData() {
-        viewModel.getProductListLiveData().observe(this, products -> {
-            cartAdapter.setMainData(products);
+        viewModel.getSuccessGetOrderEvent().observe(this, aVoid -> {
+            cartAdapter.setMainData(viewModel.getOrder().getProduct());
             binding.tvTotalPrice.setText(TextUtil.getInstance().formatToRp(viewModel.calculateTotalPrice()));
+            binding.btnCheckout.setEnabled(true);
         });
     }
 }

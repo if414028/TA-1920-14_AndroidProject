@@ -33,7 +33,6 @@ public class ProductHomeViewModel extends AndroidViewModel {
     private SingleLiveEvent<DatabaseError> errorGetListProductEvent = new SingleLiveEvent<>();
     private List<Product> newArrivalsProductList = new ArrayList<>();
     private List<Category> categoryList = new ArrayList<>();
-    private boolean isDataFetched;
 
     public void fetchAllProduct() {
         rootDatabase = FirebaseDatabase.getInstance();
@@ -58,7 +57,6 @@ public class ProductHomeViewModel extends AndroidViewModel {
                     }
                 }
                 successGetListProductEvent.callFromBackgroundThread();
-                isDataFetched = true;
             }
 
             @Override

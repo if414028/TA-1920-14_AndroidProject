@@ -173,7 +173,7 @@ public class MyMotifFragment extends Fragment {
         motifAdapter = new UserMotifRecyclerAdapter(this, realm.where(Motif.class).findAll().sort("id", Sort.DESCENDING), true);
         kristikAdapter = new UserKristikRecyclerAdapter(this, realm.where(Kristik.class).findAll().sort("id", Sort.DESCENDING), true);
 
-        imageRecyclerView.setAdapter(stockImageAdapter);
+        imageRecyclerView.setAdapter(motifAdapter);
     }
 
     private void setupLayoutManager() {

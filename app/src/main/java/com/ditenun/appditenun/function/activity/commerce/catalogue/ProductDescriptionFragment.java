@@ -47,21 +47,12 @@ public class ProductDescriptionFragment extends DialogFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_description, container, false);
 
         initLayout();
-        observeLiveData();
 
         return binding.getRoot();
     }
 
     private void initLayout() {
+        binding.tvProductDescription.setText(viewModel.getProduct().getDescription());
         binding.btnBack.setOnClickListener(view -> dismiss());
-    }
-
-    private void observeLiveData() {
-        viewModel.getProduct().observe(this, new Observer<Product>() {
-            @Override
-            public void onChanged(Product product) {
-                binding.tvProductDescription.setText(product.getDescription());
-            }
-        });
     }
 }

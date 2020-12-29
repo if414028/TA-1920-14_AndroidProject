@@ -11,17 +11,14 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ActivityDashboardBinding;
 import com.ditenun.appditenun.function.activity.commerce.cart.CartActivity;
 import com.ditenun.appditenun.function.activity.commerce.dashboard.account.AccountFragment;
-import com.ditenun.appditenun.function.activity.commerce.dashboard.home.DashboardFragment;
 import com.ditenun.appditenun.function.activity.commerce.dashboard.product.ProductFragment;
 import com.ditenun.appditenun.function.activity.commerce.dashboard.product.ProductHomeFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ditenun.appditenun.function.activity.commerce.order.list.ListOrderActivity;
 
 import javax.inject.Inject;
 
@@ -35,6 +32,7 @@ public class DashboardActivity extends AppCompatActivity {
     private ActivityDashboardBinding binding;
 
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 99;
+    public static final String ARG_SUCCESS_CREATE_ORDER = "success_create_order";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +40,7 @@ public class DashboardActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
 
         initLayout();
+        getAdditionalData();
     }
 
     private void initLayout() {
@@ -98,6 +97,18 @@ public class DashboardActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+    }
+
+    private void getAdditionalData() {
+        Intent intent = getIntent();
+        if (intent != null) {
+            if (intent.hasExtra(ARG_SUCCESS_CREATE_ORDER)) {
+                if (intent.getBooleanExtra(ARG_SUCCESS_CREATE_ORDER, false)) {
+                    Intent intentListOrder = new Intent(getApplicationContext(), ListOrderActivity.class);
+                    startActivity(intentListOrder);
+                }
+            }
         }
     }
 

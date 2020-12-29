@@ -282,7 +282,7 @@
     <string name="buy">Beli</string>
 
     <!--Product-->
-    <string name="new_arrivals">New Aririvals</string>
+    <string name="new_arrivals">New Arrivals</string>
     <string name="see_all"><u>See All</u></string>
     <string name="category">Kategori</string>
     <string name="product_description">Deskripsi</string>
@@ -317,13 +317,11 @@
     <string name="delivery_method_title">Metode Pengiriman</string>
     <string name="payment_details_title">Rincian Pembayaran</string>
     <string name="total_order_title">Total Belanja</string>
+    <string name="shipped_by">Pengiriman Oleh</string>
+    <string name="delivery_no">Nomor Pengiriman</string>
 
     <!--Track-->
     <string name="track_title">Lacak Barang</string>
-    <string name="order_number">Nomor Pesanan</string>
-    <string name="transaction_date">Tanggal Transaksi</string>
-    <string name="payment_status">Status Pembayaran</string>
-    <string name="payment_method">Metode Pembayaran</string>
     <string name="delivery_status">Status Pengiriman</string>
     <string name="track_button">Lacak</string>
     <string name="ordered_product">Produk Pesanan</string>
@@ -334,5 +332,17 @@
     <!--Module-->
     <string name="ecommerce_module">Shop</string>
     <string name="design_module">Desain \nMotif</string>
+
+    <!--Order-->
+    <string name="order_number">Nomor Pesanan</string>
+    <string name="transaction_date">Tanggal Transaksi</string>
+    <string name="payment_status">Status Pembayaran</string>
+    <string name="payment_method">Metode Pembayaran</string>
+    <string name="order_again">Belanja Lagi</string>
+    <string name="open_list_order">Daftar Pesanan</string>
+    <string name="my_order">Pesanan Saya</string>
+    <string name="detail_order">Lihat Detail</string>
+    <string name="track_order">Lacak Pesanan</string>
+    <string name="list_transaction">Daftar Transaksi</string>
 
 </resources>

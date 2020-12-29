@@ -88,7 +88,7 @@ public class AddAddressFragment extends DialogFragment implements OnMapReadyCall
 
     private void initLayout() {
         binding.btnBack.setOnClickListener(view -> dismiss());
-        binding.etAddress.setText(viewModel.getAddress());
+        binding.etAddress.setText(viewModel.getOrder().getAddress());
         binding.btnSubmit.setOnClickListener(view -> {
             String address = binding.etAddress.getText().toString();
             viewModel.submitAddress(address);

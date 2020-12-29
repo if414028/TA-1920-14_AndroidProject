@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.AcoountFragmentBinding;
 import com.ditenun.appditenun.function.activity.LoginActivity;
+import com.ditenun.appditenun.function.activity.commerce.order.list.ListOrderActivity;
 
 public class AccountFragment extends Fragment {
 
@@ -44,23 +45,11 @@ public class AccountFragment extends Fragment {
 
     }
 
-    private void initLayout(){
-        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSharedPreferences("login", getActivity().MODE_PRIVATE).edit().putBoolean("logged", false).apply();
-                startLoginActivity();
-            }
+    private void initLayout() {
+        binding.btnListTransaction.setOnClickListener(view -> {
+            Intent intent = new Intent(getContext(), ListOrderActivity.class);
+            startActivity(intent);
         });
-    }
-
-    private void startLoginActivity() {
-        Intent intent = new Intent(getContext(), LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-        startActivity(intent);
-
-        getActivity().finish();
     }
 
 }

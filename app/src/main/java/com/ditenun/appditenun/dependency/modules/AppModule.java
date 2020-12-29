@@ -23,7 +23,9 @@ import com.ditenun.appditenun.function.activity.RegisterActivity;
 import com.ditenun.appditenun.function.activity.SplashscreenActivity;
 import com.ditenun.appditenun.function.activity.commerce.catalogue.DetailProductActivity;
 import com.ditenun.appditenun.function.activity.commerce.delivery.DeliveryActivity;
+import com.ditenun.appditenun.function.activity.commerce.order.list.ListOrderActivity;
 import com.ditenun.appditenun.function.activity.commerce.payment.PaymentActivity;
+import com.ditenun.appditenun.function.activity.commerce.payment.ReviewPaymentActivity;
 import com.ditenun.appditenun.function.activity.commerce.track.TrackActivity;
 import com.ditenun.appditenun.function.fragment.BrowseMotifFragment;
 import com.ditenun.appditenun.function.fragment.MyMotifFragment;
@@ -64,7 +66,9 @@ import dagger.Provides;
                 PaymentActivity.class,
                 DeliveryActivity.class,
                 TrackActivity.class,
-                ModuleSelectionActivity.class
+                ModuleSelectionActivity.class,
+                ReviewPaymentActivity.class,
+                ListOrderActivity.class
         }
 )
 

@@ -29,12 +29,26 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".function.activity.commerce.order.track.TrackOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".function.activity.commerce.order.detail.DetailOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".function.activity.commerce.order.list.ListOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".function.activity.commerce.payment.ReviewPaymentActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".function.activity.ModuleSelectionActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -55,7 +69,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".function.activity.commerce.dashboard.DashboardActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".function.activity.KlasifikasiulosActivity" />
         <activity android:name=".function.activity.VerifikasiuloasActivity" />
         <activity

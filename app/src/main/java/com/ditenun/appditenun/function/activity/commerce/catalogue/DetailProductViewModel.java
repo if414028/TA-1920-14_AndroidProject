@@ -6,43 +6,66 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.ditenun.appditenun.dependency.models.Order;
 import com.ditenun.appditenun.dependency.models.Product;
+import com.ditenun.appditenun.function.util.SingleLiveEvent;
+
+import rx.Single;
 
 public class DetailProductViewModel extends AndroidViewModel {
 
-    private MutableLiveData<Product> productLiveData = new MutableLiveData<>();
+    private SingleLiveEvent<Void> successGetDetailProduct = new SingleLiveEvent<>();
+    private SingleLiveEvent<Integer> increasePurchaseQtyEvent = new SingleLiveEvent<>();
+    private SingleLiveEvent<Integer> decreasePurchaseQtyEvent = new SingleLiveEvent<>();
+    private Product product;
+    private Order order;
 
     public DetailProductViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public void setProduct(Product item) {
-        productLiveData.postValue(item);
-    }
-
     public void increaseProductQty() {
-        Product product = productLiveData.getValue();
         if (product != null && product.getQty() != null) {
             int currentQty = product.getQty();
             int resultQty = currentQty + 1;
             product.setQty(resultQty);
-            productLiveData.postValue(product);
+            increasePurchaseQtyEvent.postValue(product.getQty());
         }
     }
 
     public void decreaseProductQty() {
-        Product product = productLiveData.getValue();
         if (product != null && product.getQty() != null) {
             int currentQty = product.getQty();
             int resultQty;
             if (currentQty > 1) resultQty = currentQty - 1;
             else resultQty = 1;
             product.setQty(resultQty);
-            productLiveData.postValue(product);
+            decreasePurchaseQtyEvent.postValue(product.getQty());
         }
     }
 
-    public MutableLiveData<Product> getProduct() {
-        return productLiveData;
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+        successGetDetailProduct.callFromBackgroundThread();
+    }
+
+    public SingleLiveEvent<Void> getSuccessGetDetailProduct() {
+        return successGetDetailProduct;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public SingleLiveEvent<Integer> getIncreasePurchaseQtyEvent() {
+        return increasePurchaseQtyEvent;
+    }
+
+    public SingleLiveEvent<Integer> getDecreasePurchaseQtyEvent() {
+        return decreasePurchaseQtyEvent;
     }
 }

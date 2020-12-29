@@ -15,11 +15,15 @@ import android.view.View;
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ActivityDeliveryBinding;
 import com.ditenun.appditenun.databinding.ItemOrderBinding;
+import com.ditenun.appditenun.databinding.ItemPaymentMethodBinding;
+import com.ditenun.appditenun.databinding.ItemShippingMethodBinding;
 import com.ditenun.appditenun.dependency.models.Product;
+import com.ditenun.appditenun.dependency.models.Shipping;
 import com.ditenun.appditenun.function.activity.commerce.catalogue.ProductDescriptionFragment;
 import com.ditenun.appditenun.function.activity.commerce.payment.PaymentActivity;
 import com.ditenun.appditenun.function.util.SimpleRecyclerAdapter;
 import com.ditenun.appditenun.function.util.TextUtil;
+import com.google.firebase.database.DatabaseError;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -32,6 +36,7 @@ public class DeliveryActivity extends AppCompatActivity {
     private DeliveryViewModel viewModel;
 
     private SimpleRecyclerAdapter<Product> productAdapter;
+    private SimpleRecyclerAdapter<Shipping> shippingMethodAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +47,15 @@ public class DeliveryActivity extends AppCompatActivity {
         getAdditionalData();
         initLayout();
         observeLiveEvent();
+
+        viewModel.getAllShippingMethod();
     }
 
     private void getAdditionalData() {
         Intent intent = getIntent();
         if (intent != null) {
-            if (intent.hasExtra("productList")) {
-                viewModel.setProductList(intent.getParcelableArrayListExtra("productList"));
+            if (intent.hasExtra("order")) {
+                viewModel.setOrder(intent.getParcelableExtra("order"));
             }
         }
     }
@@ -57,6 +64,7 @@ public class DeliveryActivity extends AppCompatActivity {
         binding.btnBack.setOnClickListener(view -> onBackPressed());
         binding.btnPay.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
+            intent.putExtra("order", viewModel.getOrder());
             startActivity(intent);
         });
         binding.etDeliveryAddress.setOnClickListener(view -> {
@@ -68,6 +76,7 @@ public class DeliveryActivity extends AppCompatActivity {
         binding.tvTotalPayment.setText(TextUtil.getInstance().formatToRp(viewModel.calculateNettTotalPrice()));
         binding.tvTotalValue.setText(TextUtil.getInstance().formatToRp(viewModel.calculateNettTotalPrice()));
         initProductRecyclerView();
+        initShippingMethodRecyclerView();
     }
 
     private void initProductRecyclerView() {
@@ -81,14 +90,51 @@ public class DeliveryActivity extends AppCompatActivity {
             Picasso.with(getApplicationContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgProduct);
         });
         binding.rvOrder.setAdapter(productAdapter);
-        productAdapter.setMainData(viewModel.getProductList());
+        productAdapter.setMainData(viewModel.getOrder().getProduct());
+    }
+
+    private void refreshLayout(){
+        binding.tvTotalOrder.setText(TextUtil.getInstance().formatToRp(viewModel.calculateTotalOrderPrice()));
+        binding.tvTotalPayment.setText(TextUtil.getInstance().formatToRp(viewModel.calculateNettTotalPrice()));
+        binding.tvTotalValue.setText(TextUtil.getInstance().formatToRp(viewModel.calculateNettTotalPrice()));
+        binding.tvShippingPrice.setText(viewModel.getOrder().getShipping() != null ? TextUtil.getInstance().formatToRp(viewModel.getOrder().getShipping().getShipPrice()) : "-");
+        validateSubmitButton();
+    }
+
+    private void validateSubmitButton(){
+        binding.btnPay.setEnabled(viewModel.getOrder().getShipping() != null && viewModel.getOrder().getAddress() != null);
+    }
+
+    private void initShippingMethodRecyclerView() {
+        binding.rvDeliveryMethod.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        shippingMethodAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_shipping_method, (holder, item) -> {
+            ItemShippingMethodBinding itemBinding = (ItemShippingMethodBinding) holder.getLayoutBinding();
+            itemBinding.setModel(item);
+            itemBinding.setTextUtil(TextUtil.getInstance());
+            itemBinding.icSelectedIndicator.setOnClickListener(view -> {
+                item.setSelected(!item.isSelected());
+                shippingMethodAdapter.notifyDataSetChanged();
+
+                if (item.isSelected()) viewModel.selectShippingMethod(item);
+                else viewModel.selectShippingMethod(null);
+
+                refreshLayout();
+            });
+        });
+        binding.rvDeliveryMethod.setAdapter(shippingMethodAdapter);
     }
 
     private void observeLiveEvent() {
-        viewModel.getSubmitAddressEvent().observe(this, new Observer<String>() {
+        viewModel.getSubmitAddressEvent().observe(this, s -> binding.etDeliveryAddress.setText(s));
+        viewModel.getSuccessGetListShippingMethod().observe(this, aVoid -> {
+            shippingMethodAdapter.setMainData(viewModel.getListShippingMethod());
+            shippingMethodAdapter.notifyDataSetChanged();
+            refreshLayout();
+        });
+        viewModel.getErrorGetListShippingMethod().observe(this, new Observer<DatabaseError>() {
             @Override
-            public void onChanged(String s) {
-                binding.etDeliveryAddress.setText(s);
+            public void onChanged(DatabaseError databaseError) {
+
             }
         });
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray_1"
@@ -136,7 +136,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Regular"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -145,7 +145,7 @@
 
                     <TextView
                         android:id="@+id/tv_sub_total_price"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Regular"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -162,7 +162,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Regular"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -171,7 +171,7 @@
 
                     <TextView
                         android:id="@+id/tv_promo"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Regular"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -188,7 +188,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Regular"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -197,7 +197,7 @@
 
                     <TextView
                         android:id="@+id/tv_shipping_price"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Regular"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -220,7 +220,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Regular"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -229,7 +229,7 @@
 
                     <TextView
                         android:id="@+id/tv_selected_payment_method"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Regular"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"

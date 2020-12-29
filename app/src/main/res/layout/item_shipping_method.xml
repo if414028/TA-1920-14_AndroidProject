@@ -6,7 +6,11 @@
 
         <variable
             name="model"
-            type="com.ditenun.appditenun.dependency.models.PaymentMethod" />
+            type="com.ditenun.appditenun.dependency.models.Shipping" />
+
+        <variable
+            name="textUtil"
+            type="com.ditenun.appditenun.function.util.TextUtil" />
 
     </data>
 
@@ -24,31 +28,32 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_payment_method_name"
+            android:id="@+id/tv_shipping_method_name"
             style="@style/Roboto.Regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_16sdp"
-            android:text="@{model.paymentName}"
-            tools:text="Internet Banking"
+            android:text="@{model.courierName}"
             android:textColor="@color/dark_blue"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_shipping_price"
             app:layout_constraintStart_toEndOf="@id/ic_selected_indicator"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Internet Banking" />
 
         <TextView
-            android:id="@+id/tv_payment_method_desc"
-            style="@style/Roboto.Regular"
-            android:layout_width="0dp"
+            android:id="@+id/tv_shipping_price"
+            style="@style/Roboto.SemiBold"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:text="@{model.paymentDescription}"
-            tools:text="BNI, Bank Mandiri, BRI"
-            android:textColor="@color/gray_5"
+            android:text="@{textUtil.formatToRp(model.shipPrice)}"
+            android:textColor="@color/dark_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ic_selected_indicator"
-            app:layout_constraintTop_toBottomOf="@id/tv_payment_method_name" />
+            app:layout_constraintStart_toEndOf="@id/tv_shipping_method_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Rp. 10.000" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

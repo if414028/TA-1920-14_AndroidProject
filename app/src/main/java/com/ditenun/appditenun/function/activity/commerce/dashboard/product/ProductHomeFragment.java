@@ -71,20 +71,20 @@ public class ProductHomeFragment extends Fragment {
     private void initLayout() {
         initImageSlider();
         initNewArrivalsRecyclerView();
-        initCategoryRecyclerView();
+//        initCategoryRecyclerView();
     }
 
     private void initImageSlider() {
         TextSliderView textSliderView1 = new TextSliderView(getContext());
-        textSliderView1.description("image 1").image(R.drawable.img_dashboard);
+        textSliderView1.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2F1a.png?alt=media&token=3f915c43-6e85-4ca4-a6ae-57fe90ca0de0");
         binding.imageSlider.addSlider(textSliderView1);
 
         TextSliderView textSliderView2 = new TextSliderView(getContext());
-        textSliderView2.description("image 2").image(R.drawable.img_dashboard);
+        textSliderView2.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2F2a.png?alt=media&token=626b9922-72b8-45eb-be9b-4728cdef24c7");
         binding.imageSlider.addSlider(textSliderView2);
 
         TextSliderView textSliderView3 = new TextSliderView(getContext());
-        textSliderView3.description("image 3").image(R.drawable.img_dashboard);
+        textSliderView3.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2F3a.png?alt=media&token=0df48efb-8657-4a44-9392-8f3f33290bcb");
         binding.imageSlider.addSlider(textSliderView3);
     }
 
@@ -108,15 +108,15 @@ public class ProductHomeFragment extends Fragment {
         binding.rvNewArrivals.setAdapter(newArrivalsAdapter);
     }
 
-    private void initCategoryRecyclerView() {
-        binding.rvCategory.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        categoryAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_category, (holder, item) -> {
-            ItemCategoryBinding itemBinding = (ItemCategoryBinding) holder.getLayoutBinding();
-            Picasso.with(getContext()).load(item.getCategoryImage()).into(itemBinding.ivCategory);
-        });
-        binding.rvCategory.setAdapter(categoryAdapter);
-        categoryAdapter.setMainData(mViewModel.getCategoryList());
-    }
+//    private void initCategoryRecyclerView() {
+//        binding.rvCategory.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+//        categoryAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_category, (holder, item) -> {
+//            ItemCategoryBinding itemBinding = (ItemCategoryBinding) holder.getLayoutBinding();
+//            Picasso.with(getContext()).load(item.getCategoryImage()).into(itemBinding.ivCategory);
+//        });
+//        binding.rvCategory.setAdapter(categoryAdapter);
+//        categoryAdapter.setMainData(mViewModel.getCategoryList());
+//    }
 
     private void observeLiveEvent() {
         mViewModel.getSuccessGetListProductEvent().observe(this, aVoid -> {

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_16sdp"
+        tools:context=".function.activity.commerce.payment.ReviewPaymentActivity">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/ly_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/ly_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_review_payment_title"
+                    style="@style/Roboto.SemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:text="Pesanan Berhasil Dilakukan"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_order_number_title"
+                        style="@style/Roboto.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_24sdp"
+                        android:text="@string/order_number"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintEnd_toStartOf="@id/tv_order_number_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_order_number_value"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_24sdp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_order_number_title"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="120500" />
+
+                    <TextView
+                        android:id="@+id/tv_order_date_title"
+                        style="@style/Roboto.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/transaction_date"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintEnd_toStartOf="@id/tv_order_date_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_order_number_title" />
+
+                    <TextView
+                        android:id="@+id/tv_order_date_value"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_order_date_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_order_number_value"
+                        tools:text="25 Juli 2020" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_title"
+                        style="@style/Roboto.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/payment_status"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintEnd_toStartOf="@id/tv_payment_status_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_order_date_title" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_value"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_payment_status_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_order_date_value"
+                        tools:text="Pembayaran Diterima" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_method_title"
+                        style="@style/Roboto.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/payment_method"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintEnd_toStartOf="@id/tv_payment_method_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_payment_status_title" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_method_value"
+                        style="@style/Roboto.SemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_blue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_payment_method_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_payment_status_value"
+                        tools:text="Kartu Kredit" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/ly_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ly_scroll_view">
+
+            <Button
+                android:id="@+id/btn_open_list_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_button"
+                android:text="@string/open_list_order"
+                style="@style/Roboto.SemiBold"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btn_order_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/main_button"
+                android:text="@string/order_again"
+                style="@style/Roboto.SemiBold"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

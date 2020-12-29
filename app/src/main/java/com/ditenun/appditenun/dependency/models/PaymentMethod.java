@@ -5,32 +5,41 @@ import android.os.Parcelable;
 
 public class PaymentMethod implements Parcelable {
 
-    private Integer paymentCode;
+    private Integer id;
     private String paymentName;
-    private String paymentDesc;
+    private String paymentDescription;
+    private String paymentCategoryCode;
+    private String paymentCategoryName;
     private boolean isSelected;
+
+    public PaymentMethod() {
+    }
 
     protected PaymentMethod(Parcel in) {
         if (in.readByte() == 0) {
-            paymentCode = null;
+            id = null;
         } else {
-            paymentCode = in.readInt();
+            id = in.readInt();
         }
         paymentName = in.readString();
-        paymentDesc = in.readString();
+        paymentDescription = in.readString();
+        paymentCategoryCode = in.readString();
+        paymentCategoryName = in.readString();
         isSelected = in.readByte() != 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        if (paymentCode == null) {
+        if (id == null) {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeInt(paymentCode);
+            dest.writeInt(id);
         }
         dest.writeString(paymentName);
-        dest.writeString(paymentDesc);
+        dest.writeString(paymentDescription);
+        dest.writeString(paymentCategoryCode);
+        dest.writeString(paymentCategoryName);
         dest.writeByte((byte) (isSelected ? 1 : 0));
     }
 
@@ -51,12 +60,12 @@ public class PaymentMethod implements Parcelable {
         }
     };
 
-    public Integer getPaymentCode() {
-        return paymentCode;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPaymentCode(Integer paymentCode) {
-        this.paymentCode = paymentCode;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPaymentName() {
@@ -67,12 +76,28 @@ public class PaymentMethod implements Parcelable {
         this.paymentName = paymentName;
     }
 
-    public String getPaymentDesc() {
-        return paymentDesc;
+    public String getPaymentDescription() {
+        return paymentDescription;
     }
 
-    public void setPaymentDesc(String paymentDesc) {
-        this.paymentDesc = paymentDesc;
+    public void setPaymentDescription(String paymentDescription) {
+        this.paymentDescription = paymentDescription;
+    }
+
+    public String getPaymentCategoryCode() {
+        return paymentCategoryCode;
+    }
+
+    public void setPaymentCategoryCode(String paymentCategoryCode) {
+        this.paymentCategoryCode = paymentCategoryCode;
+    }
+
+    public String getPaymentCategoryName() {
+        return paymentCategoryName;
+    }
+
+    public void setPaymentCategoryName(String paymentCategoryName) {
+        this.paymentCategoryName = paymentCategoryName;
     }
 
     public boolean isSelected() {
