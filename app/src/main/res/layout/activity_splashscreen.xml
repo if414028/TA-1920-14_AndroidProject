@@ -4,17 +4,17 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/splash_background"
     tools:context=".function.activity.SplashscreenActivity">
 
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_250sdp"
         android:scaleType="fitCenter"
         android:layout_centerInParent="true"
-        android:src="@drawable/logo_ditenun" />
+        android:src="@drawable/logo_rounded" />
 
 
 <!--    <LinearLayout-->

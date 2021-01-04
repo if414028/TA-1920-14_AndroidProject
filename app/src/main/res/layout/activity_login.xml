@@ -19,7 +19,7 @@
             android:scaleType="fitCenter">
 
             <TextView
-                style="@style/Roboto.SemiBold"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login_title"
@@ -34,7 +34,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -43,7 +43,7 @@
 
                 <TextView
                     android:id="@+id/gotoRegister"
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Condensed"
                     android:gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
             </LinearLayout>
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
@@ -65,7 +65,7 @@
 
             <EditText
                 android:id="@+id/email"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -78,7 +78,7 @@
                 android:scaleType="fitCenter" />
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -89,7 +89,7 @@
 
             <EditText
                 android:id="@+id/password"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/remember_me"
@@ -124,7 +124,7 @@
 
             <TextView
                 android:id="@+id/tv_forgot_pwd"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_14sdp"
@@ -133,7 +133,7 @@
 
             <Button
                 android:id="@+id/login"
-                style="@style/Roboto.SemiBold"
+                style="@style/Roboto.Light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

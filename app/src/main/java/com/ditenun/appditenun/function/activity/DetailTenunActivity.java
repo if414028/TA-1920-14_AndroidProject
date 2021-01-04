@@ -30,6 +30,7 @@ import com.ditenun.appditenun.dependency.models.Tenun;
 import com.ditenun.appditenun.dependency.modules.APIModule;
 import com.ditenun.appditenun.dependency.network.TenunNetworkInterface;
 import com.ditenun.appditenun.function.adapter.RecyclerViewAdapterMotif;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,14 +61,9 @@ public class DetailTenunActivity extends AppCompatActivity {
     TextView textOriginTenun;
     @BindView(R.id.titleTenun)
     TextView textTitleTenun;
-    @BindView(R.id.coordinatorLayoutDetailTenun)
-    CoordinatorLayout coordinatorLayout;
+    @BindView(R.id.btn_back)
+    ImageView btnBack;
 
-    ImageView imageViewBarBack;
-    @BindView(R.id.buttonHome)
-    Button buttonHome;
-
-    MenuItem generateMenu;
     List<MotifTenun> listMotif = Collections.EMPTY_LIST;
     //    MaterialDialog dialog2;
     private Tenun tenun;
@@ -82,7 +78,6 @@ public class DetailTenunActivity extends AppCompatActivity {
         return intent;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,27 +86,16 @@ public class DetailTenunActivity extends AppCompatActivity {
         App.get(getApplicationContext()).getInjector().inject(this);
         ButterKnife.bind(this);
         listMotif = new ArrayList<MotifTenun>();
-        imageViewBarBack = (ImageView) findViewById(R.id.imageViewBarBack);
 
-        imageViewBarBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-                finish();
-            }
-        });
-
-        buttonHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(HomeActivity.createIntent(getApplicationContext()));
-            }
+        btnBack.setOnClickListener(v -> {
+            onBackPressed();
+            finish();
         });
 
         Intent returnIntent = getIntent();
         String idTenun = returnIntent.getStringExtra(KEY_ID_TENUN);
 
-        listMotif = realm.where(MotifTenun.class).equalTo("idTenun",idTenun).findAll().sort("id", Sort.ASCENDING);
+        listMotif = realm.where(MotifTenun.class).equalTo("idTenun", idTenun).findAll().sort("id", Sort.ASCENDING);
         Timber.i("Jumlah Motif: ", listMotif.size());
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerviewulos_id);
         RecyclerViewAdapterMotif myAdapter = new RecyclerViewAdapterMotif(this, listMotif);
@@ -122,99 +106,18 @@ public class DetailTenunActivity extends AppCompatActivity {
                 .equalTo("id", idTenun)
                 .findFirst();
         String imgUrl = APIModule.ENDPOINT + tenun.getImageSrc();
-
-        /* for beauty toolbar */
-        SimpleTarget target = new SimpleTarget<Bitmap>() {
-            @Override
-            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                thumbTenun.setImageBitmap(resource);
-                Palette palette = Palette.from(resource).generate();
-                int defaultColor;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    defaultColor = getResources().getColor(R.color.colorPrimaryDark, getTheme());
-                } else {
-                    defaultColor = getResources().getColor(R.color.colorPrimaryDark);
-                }
-
-                int newPrimaryColor = palette.getLightVibrantColor(defaultColor);
-                int newAccentColor = palette.getDarkVibrantColor(defaultColor);
-
-//                toolbar.setBackgroundColor(newPrimaryColor);
-//                toolbar.setNavigationIcon(IconUtils.getIconDrawableWithColor(getApplicationContext(), IoniconsIcons.ion_android_arrow_back, newAccentColor));
-//                textToolbar.setTextColor(newAccentColor);
-            }
-        };
-
-        Glide.with(getApplicationContext())
-                .load(imgUrl)
-                .asBitmap()
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .asIs()
-                .into(target);
-
-        Timber.i(tenun.getImageSrc());
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        Picasso.with(getApplicationContext()).load(imgUrl).into(thumbTenun);
         setContent();
-
-//        thumbTenun.setOnClickListener(v -> startActivity(PreviewActivity.createIntent(getApplicationContext(), imgUrl)));
     }
 
     private void setContent() {
-        textHistoryTenun.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/garamond_regular_bold.ttf"));
-        textHistoryTenun.setTextColor(Color.BLACK);
         textHistoryTenun.setText(tenun.getSejarahTenun());
-
-        textDescTenun.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/myriad_condensed.ttf"));
-        textDescTenun.setTextColor(Color.BLACK);
         textDescTenun.setText(tenun.getDeskripsiTenun());
-
-        textTitleTenun.setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/garamond_regular_bold.ttf"));
-        textTitleTenun.setTextColor(Color.BLACK);
         textTitleTenun.setText(tenun.getNamaTenun());
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         finish();
     }
-
-
-
-//    private void generateNewMotif(String algoritma, String sourceFile, String model, String warna, String idMotif) {
-//        progressBar.setVisibility(View.VISIBLE);
-//        RequestBodyGenerateImg2 requestBodyGenerateImg2 = new RequestBodyGenerateImg2(algoritma, sourceFile, model, warna, idMotif);
-//
-//        tenunNetworkInterface.generateNewMotif(APIModule.ACCESS_TOKEN_TEMP, requestBodyGenerateImg2).enqueue(new Callback<ResponseGetGeneratedImage>() {
-//            @Override
-//            public void onResponse(Call<ResponseGetGeneratedImage> call, Response<ResponseGetGeneratedImage> response) {
-//
-//                if (response.isSuccessful()) {
-//                    String newImgUrl = response.body().getExec_result();
-//                    List<Generate> generate = response.body().getData();
-//                    progressBar.setVisibility(View.GONE);
-//                } else {
-//                    Snackbar snackbar = Snackbar.make(coordinatorLayout, "Error to generate", Snackbar.LENGTH_INDEFINITE);
-//                    snackbar.setAction("DISMISS", v -> {
-//                        snackbar.dismiss();
-//                    });
-//                    snackbar.show();
-//                    progressBar.setVisibility(View.GONE);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseGetGeneratedImage> call, Throwable t) {
-//                Snackbar snackbar = Snackbar.make(coordinatorLayout, "Error to generate", Snackbar.LENGTH_INDEFINITE);
-//                snackbar.setAction("DISMISS", v -> {
-//                    snackbar.dismiss();
-//                });
-//                snackbar.show();
-//                progressBar.setVisibility(View.GONE);
-//            }
-//        });
-//    }
-
-
 }

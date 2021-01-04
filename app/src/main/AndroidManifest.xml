@@ -29,6 +29,8 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".function.activity.ListTenunActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".function.activity.commerce.order.track.TrackOrderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -70,7 +72,7 @@
         <activity
             android:name=".function.activity.commerce.dashboard.DashboardActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustNothing"/>
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".function.activity.KlasifikasiulosActivity" />
         <activity android:name=".function.activity.VerifikasiuloasActivity" />
         <activity

@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/tv_product_name"
-            style="@style/Roboto.SemiBold"
+            style="@style/Roboto.Bold.Condensed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_16sdp"
@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/tv_size"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Free Size"
@@ -47,7 +47,7 @@
 
             <TextView
                 android:id="@+id/tv_price"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rp. 1.350.000"
@@ -65,7 +65,10 @@
             android:layout_marginRight="@dimen/_16sdp"
             android:background="@drawable/edittext_rounded"
             android:padding="@dimen/_8sdp"
+            style="@style/Roboto.Bold.Condensed"
             android:text="2"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/dark_blue"
             app:layout_constraintEnd_toStartOf="@id/btn_delete"
             app:layout_constraintStart_toEndOf="@id/ly_product_price"
             app:layout_constraintTop_toBottomOf="@id/tv_product_name" />

@@ -6,8 +6,43 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_1"
+        android:background="@drawable/white_background_ditenun"
         tools:context=".function.activity.commerce.cart.CartActivity">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/_4sdp"
+            app:cardBackgroundColor="@color/dark_blue_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp">
+
+                <TextView
+                    style="@style/Roboto.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp" />
+
+                <ImageView
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginLeft="@dimen/_2sdp"
+                    android:src="@drawable/logo_ditenun_white_strip" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"
@@ -15,7 +50,7 @@
             android:layout_height="wrap_content"
             app:cardElevation="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/header">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,13 +66,13 @@
                     android:tint="@color/gray_5" />
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_16sdp"
                     android:text="@string/cart_title"
-                    android:textColor="@color/dark_blue" />
+                    android:textSize="@dimen/_14ssp" />
 
             </LinearLayout>
 
@@ -69,7 +104,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/total"
@@ -77,18 +112,19 @@
 
                 <TextView
                     android:id="@+id/tv_total_price"
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:text="-"
-                    android:textColor="@color/dark_blue" />
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/_14ssp" />
 
             </LinearLayout>
 
             <Button
                 android:id="@+id/btn_checkout"
-                style="@style/Roboto.SemiBold"
+                style="@style/Roboto.Light"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

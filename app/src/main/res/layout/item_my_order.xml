@@ -9,7 +9,7 @@
 
         <TextView
             android:id="@+id/tv_order_number"
-            style="@style/Roboto.SemiBold"
+            style="@style/Roboto.Bold.Condensed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/dark_blue"
@@ -28,14 +28,14 @@
 
             <TextView
                 android:id="@+id/tv_order_date"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/dark_blue"
                 tools:text="Sabtu, 25 Juli 2020" />
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Mono.Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" | "
@@ -43,7 +43,7 @@
 
             <TextView
                 android:id="@+id/tv_qty"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/dark_blue"
@@ -72,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@id/rv_product">
 
             <TextView
-                style="@style/Roboto.SemiBold"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -100,7 +100,7 @@
             app:layout_constraintTop_toBottomOf="@id/btn_detail_order">
 
             <TextView
-                style="@style/Roboto.SemiBold"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -215,7 +215,7 @@
     <string name="edit_kristik">Edit Kristik</string>
     <string name="multi_selector">Multi Selector</string>
     <string name="magic_selector">Magic Selector</string>
-    <string name="keluartanpasimpan">Apakah Anda kembali tanpa menyimpan?</string>
+    <string name="keluartanpasimpan">Apakah anda ingin kembali?</string>
     <string name="kembali">Kembali</string>
     <string name="pilih_warna"><![CDATA[Pilihan Warna =>]]></string>
     <string name="kristik_black">Kristik Kosong</string>
@@ -280,12 +280,24 @@
     <string name="btn_detail_description"><u>Lihat Deskripsi</u></string>
     <string name="amount">Jumlah</string>
     <string name="buy">Beli</string>
+    <string name="create_new_motive">Cara hasilkan motif baru:</string>
+    <string name="create_new_motive_desc">Kalian bisa menciptakan desain motif digital dan kain tenun modern sesuai kreasi. Selamat mencoba!</string>
+    <string name="gallery_motive">Gallery Motif Nusantara</string>
+    <string name="search_motif_hint">Cari motif disini</string>
+    <string name="select_motive">Pilih Motif</string>
+    <string name="try_app">Coba Aplikasi</string>
+    <string name="landing_page">Selamat datang di Mobile App DiTenun. Kami membuat aplikasi pencipta motif tenun digital, dan memelihara tradisi tenun lewat teknologi.</string>
+    <string name="detail_motive">Detail Motif</string>
+    <string name="loading">Sedang Memproses...</string>
+    <string name="web_app_button_title">Coba DiTenun Web App untuk menyempurnakan desain motif tenun anda!</string>
+    <string name="web_app_button">Coba Web App</string>
 
     <!--Product-->
     <string name="new_arrivals">New Arrivals</string>
     <string name="see_all"><u>See All</u></string>
     <string name="category">Kategori</string>
     <string name="product_description">Deskripsi</string>
+    <string name="new_arrivals_desc">Berbagai produk fashion dan aksesoris dari kain tenun modern untuk menemani hari-hari anda!</string>
 
     <!--Cart-->
     <string name="cart_title">Keranjang Belanja</string>

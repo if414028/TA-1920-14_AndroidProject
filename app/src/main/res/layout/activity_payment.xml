@@ -6,13 +6,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_1"
+        android:background="@drawable/white_background_ditenun"
         tools:context=".function.activity.commerce.payment.PaymentActivity">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/dark_blue_2"
             app:cardElevation="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -20,24 +21,56 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/_16sdp">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/btn_back"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:src="@drawable/icon_back"
-                    android:tint="@color/gray_5" />
-
-                <TextView
-                    style="@style/Roboto.SemiBold"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/_16sdp"
-                    android:text="@string/payment_title"
-                    android:textColor="@color/dark_blue" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/Roboto.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:text="@string/app_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:src="@drawable/logo_ditenun_white_strip" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_16sdp">
+
+                    <ImageView
+                        android:id="@+id/btn_back"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/icon_back"
+                        android:tint="@color/gray_5" />
+
+                    <TextView
+                        style="@style/Roboto.Condensed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:text="@string/payment_title"
+                        android:textSize="@dimen/_14ssp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -58,12 +91,11 @@
                 android:padding="@dimen/_16sdp">
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/payment_method_title"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_14ssp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -86,13 +118,12 @@
                     android:background="@color/gray_3" />
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:text="@string/payment_summary_title"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_14ssp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -109,7 +140,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -118,7 +149,7 @@
 
                     <TextView
                         android:id="@+id/tv_total_price"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -136,7 +167,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -145,7 +176,7 @@
 
                     <TextView
                         android:id="@+id/tv_sub_total_price"
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -162,7 +193,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -171,7 +202,7 @@
 
                     <TextView
                         android:id="@+id/tv_promo"
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -188,7 +219,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -197,7 +228,7 @@
 
                     <TextView
                         android:id="@+id/tv_shipping_price"
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -220,7 +251,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -229,7 +260,7 @@
 
                     <TextView
                         android:id="@+id/tv_selected_payment_method"
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -263,7 +294,7 @@
 
                 <TextView
                     android:id="@+id/tv_total_title"
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/total"
@@ -274,18 +305,20 @@
 
                 <TextView
                     android:id="@+id/tv_total_value"
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:text="Rp. 2.750.000,-"
                     android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_total_title" />
 
                 <Button
                     android:id="@+id/btn_pay"
+                    style="@style/Roboto.Light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_button"

@@ -9,7 +9,7 @@
 
         <TextView
             android:id="@+id/tv_status"
-            style="@style/Roboto.Regular"
+            style="@style/Roboto.Condensed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/dark_blue"
@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/tv_status_date"
-            style="@style/Roboto.Regular"
+            style="@style/Roboto.Condensed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/dark_blue"

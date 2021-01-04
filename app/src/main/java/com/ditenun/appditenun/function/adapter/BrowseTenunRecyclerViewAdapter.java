@@ -15,6 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.dependency.models.Tenun;
 import com.ditenun.appditenun.dependency.modules.APIModule;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,18 +84,10 @@ public class BrowseTenunRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
         switch (holder.getItemViewType()) {
             case TENUN:
                 tenunTemp = (Tenun) listObject.get(position);
-
                 ViewHolderTenun viewHolderTenun = (ViewHolderTenun) holder;
                 viewHolderTenun.textViewId.setText(tenunTemp.getNamaTenun());
                 String imgUrl = APIModule.ENDPOINT + tenunTemp.getImageSrc();
-                Glide glide = null;
-                glide.with(viewHolderTenun.imageView.getContext())
-                        .load(imgUrl)
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .override(400,200)
-                        .centerCrop()
-                        .crossFade()
-                        .into(viewHolderTenun.imageView);
+                Picasso.with(viewHolderTenun.imageView.getContext()).load(imgUrl).into(viewHolderTenun.imageView);
                 viewHolderTenun.cardView.setOnClickListener(v -> onClickItemTenunListener.OnClickItemTenun(tenunTemp.getId(), viewHolderTenun.imageView));
                 break;
             case PROGRESS_BAR:

@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/location_on/baseline_location_on_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/error/baseline_error_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="a6a6a6" />
-                            <entry key="outputName" value="ic_baseline_location_on_24" />
-                            <entry key="sourceFile" value="C:\Users\Reynaldo\C:\Users\User\Desktop\JhoanRiverS\Ditenun App\classification.svg" />
+                            <entry key="outputName" value="ic_checked" />
+                            <entry key="sourceFile" value="C:\Users\Reynaldo\Downloads\checked.svg" />
                           </map>
                         </option>
                       </PersistentState>

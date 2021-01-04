@@ -6,13 +6,14 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_1"
+        android:background="@drawable/white_background_ditenun"
         tools:context=".function.activity.commerce.track.TrackActivity">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/dark_blue_2"
             app:cardElevation="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -20,24 +21,56 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/_16sdp">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/btn_back"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:src="@drawable/icon_back"
-                    android:tint="@color/gray_5" />
-
-                <TextView
-                    style="@style/Roboto.SemiBold"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/_16sdp"
-                    android:text="@string/delivery_title"
-                    android:textColor="@color/dark_blue" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_8sdp">
+
+                    <TextView
+                        style="@style/Roboto.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:text="@string/app_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:src="@drawable/logo_ditenun_white_strip" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_16sdp">
+
+                    <ImageView
+                        android:id="@+id/btn_back"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/icon_back"
+                        android:tint="@color/gray_5" />
+
+                    <TextView
+                        style="@style/Roboto.Condensed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_16sdp"
+                        android:text="@string/delivery_title"
+                        android:textSize="@dimen/_14ssp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -64,7 +97,7 @@
                     android:weightSum="2">
 
                     <TextView
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -73,7 +106,7 @@
 
                     <TextView
                         android:id="@+id/tv_order_number"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -92,7 +125,7 @@
                     android:weightSum="2">
 
                     <TextView
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -101,7 +134,7 @@
 
                     <TextView
                         android:id="@+id/transaction_date"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -120,7 +153,7 @@
                     android:weightSum="2">
 
                     <TextView
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -129,7 +162,7 @@
 
                     <TextView
                         android:id="@+id/tv_payment_status"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -148,7 +181,7 @@
                     android:weightSum="2">
 
                     <TextView
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -157,7 +190,7 @@
 
                     <TextView
                         android:id="@+id/tv_payment_method"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -175,13 +208,12 @@
                     android:background="@color/gray_3" />
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:text="@string/ordered_product"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_14ssp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -202,13 +234,12 @@
                     android:background="@color/gray_3" />
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:text="@string/delivery_status"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_14ssp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -218,12 +249,12 @@
 
                 <TextView
                     android:id="@+id/tv_delivery_status"
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:text="Dalam Pengiriman"
-                    android:textColor="@color/dark_blue" />
+                    android:textSize="@dimen/_14ssp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -251,7 +282,7 @@
 
                 <Button
                     android:id="@+id/btn_track"
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_button"

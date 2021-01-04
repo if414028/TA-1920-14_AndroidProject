@@ -16,7 +16,7 @@
             android:padding="@dimen/_16sdp">
 
             <TextView
-                style="@style/Roboto.SemiBold"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_40sdp"
@@ -31,7 +31,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -40,7 +40,7 @@
 
                 <TextView
                     android:id="@+id/tv_sign_in"
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_4sdp"
@@ -51,7 +51,7 @@
             </LinearLayout>
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
@@ -62,7 +62,7 @@
 
             <EditText
                 android:id="@+id/nameReg"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -74,7 +74,7 @@
                 android:scaleType="fitCenter" />
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
@@ -85,7 +85,7 @@
 
             <EditText
                 android:id="@+id/emailReg"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -97,7 +97,7 @@
                 android:scaleType="fitCenter" />
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
@@ -108,7 +108,7 @@
 
             <EditText
                 android:id="@+id/passwordReg"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -120,7 +120,7 @@
                 android:scaleType="fitCenter" />
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
@@ -131,20 +131,20 @@
 
             <EditText
                 android:id="@+id/phoneReg"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:background="@drawable/edittext_rounded"
                 android:hint="@string/phone"
-                android:maxLines="1"
                 android:inputType="phone"
+                android:maxLines="1"
                 android:padding="@dimen/_16sdp"
                 android:scaleType="fitCenter" />
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
@@ -155,17 +155,17 @@
 
             <Spinner
                 android:id="@+id/tenun_spinner"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/edittext_rounded"
-                style="@style/Roboto.Regular"
                 android:padding="@dimen/_16sdp"
                 android:prompt="@array/jenis_tenun" />
 
             <TextView
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
@@ -176,32 +176,33 @@
 
             <EditText
                 android:id="@+id/addressReg"
+                style="@style/Roboto.Condensed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/edittext_rounded"
-                android:lines="8"
-                android:maxLines="10"
-                android:minLines="6"
                 android:gravity="top"
                 android:hint="@string/address"
                 android:inputType="text|textMultiLine"
-                style="@style/Roboto.Regular"
+                android:lines="8"
+                android:maxLines="10"
+                android:minLines="6"
                 android:padding="@dimen/_16sdp"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                android:scrollbars="vertical" />
 
             <Button
                 android:id="@+id/register"
+                style="@style/Roboto.Light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/main_button"
-                android:textAllCaps="false"
                 android:padding="@dimen/_8sdp"
                 android:text="@string/sign_up"
+                android:textAllCaps="false"
                 android:textColor="@color/white" />
         </LinearLayout>
 

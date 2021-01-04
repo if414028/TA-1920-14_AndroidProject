@@ -29,7 +29,7 @@
 
         <TextView
             android:id="@+id/tv_shipping_method_name"
-            style="@style/Roboto.Regular"
+            style="@style/Roboto.Condensed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_16sdp"
@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/tv_shipping_price"
-            style="@style/Roboto.SemiBold"
+            style="@style/Roboto.Bold.Condensed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_16sdp"

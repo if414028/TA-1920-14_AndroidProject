@@ -68,7 +68,7 @@
                 android:paddingBottom="@dimen/_8sdp">
 
                 <TextView
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Mono.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/shooping"
@@ -98,7 +98,7 @@
                 android:paddingBottom="@dimen/_8sdp">
 
                 <TextView
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Mono.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/about"
@@ -128,7 +128,7 @@
                 android:paddingBottom="@dimen/_8sdp">
 
                 <TextView
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Mono.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/research"
@@ -158,7 +158,7 @@
                 android:paddingBottom="@dimen/_8sdp">
 
                 <TextView
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Mono.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/design"
@@ -177,7 +177,7 @@
 
             <TextView
                 android:id="@+id/tv_about_tenun"
-                style="@style/Roboto.Regular"
+                style="@style/Roboto.Mono.Regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"

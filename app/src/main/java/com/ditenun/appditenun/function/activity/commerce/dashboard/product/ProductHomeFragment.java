@@ -76,15 +76,15 @@ public class ProductHomeFragment extends Fragment {
 
     private void initImageSlider() {
         TextSliderView textSliderView1 = new TextSliderView(getContext());
-        textSliderView1.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2F1a.png?alt=media&token=3f915c43-6e85-4ca4-a6ae-57fe90ca0de0");
+        textSliderView1.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2FHero%20banner%201.png?alt=media&token=404bcdc1-cd0b-496b-92ce-16ef1ec96d57");
         binding.imageSlider.addSlider(textSliderView1);
 
         TextSliderView textSliderView2 = new TextSliderView(getContext());
-        textSliderView2.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2F2a.png?alt=media&token=626b9922-72b8-45eb-be9b-4728cdef24c7");
+        textSliderView2.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2FHero%20banner%202.png?alt=media&token=ed1595f5-84d5-4ea6-9855-5bc783625c6c");
         binding.imageSlider.addSlider(textSliderView2);
 
         TextSliderView textSliderView3 = new TextSliderView(getContext());
-        textSliderView3.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2F3a.png?alt=media&token=0df48efb-8657-4a44-9392-8f3f33290bcb");
+        textSliderView3.image("https://firebasestorage.googleapis.com/v0/b/ditenun-62c37.appspot.com/o/product%2Fimage%2FHero%20banner%203.png?alt=media&token=1b838228-25a0-40e3-8431-ed5c88e00c21");
         binding.imageSlider.addSlider(textSliderView3);
     }
 

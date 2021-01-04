@@ -28,13 +28,13 @@
                     android:tint="@color/gray_5" />
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_16sdp"
                     android:text="@string/delivery_status"
-                    android:textColor="@color/dark_blue" />
+                    android:textSize="@dimen/_14ssp" />
 
             </LinearLayout>
 
@@ -61,7 +61,7 @@
 
                     <TextView
                         android:id="@+id/tv_shipper_name_title"
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/shipped_by"
@@ -72,7 +72,7 @@
 
                     <TextView
                         android:id="@+id/tv_shipper_name_value"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textAlignment="textEnd"
@@ -84,7 +84,7 @@
 
                     <TextView
                         android:id="@+id/tv_order_number_title"
-                        style="@style/Roboto.Regular"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"
@@ -96,7 +96,7 @@
 
                     <TextView
                         android:id="@+id/tv_order_number_value"
-                        style="@style/Roboto.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4sdp"

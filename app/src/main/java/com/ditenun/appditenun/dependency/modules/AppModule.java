@@ -3,6 +3,7 @@ package com.ditenun.appditenun.dependency.modules;
 import android.app.Application;
 
 import com.ditenun.appditenun.dependency.App;
+import com.ditenun.appditenun.function.activity.ListTenunActivity;
 import com.ditenun.appditenun.function.activity.ModuleSelectionActivity;
 import com.ditenun.appditenun.function.activity.commerce.cart.CartActivity;
 import com.ditenun.appditenun.function.activity.commerce.dashboard.DashboardActivity;
@@ -68,7 +69,8 @@ import dagger.Provides;
                 TrackActivity.class,
                 ModuleSelectionActivity.class,
                 ReviewPaymentActivity.class,
-                ListOrderActivity.class
+                ListOrderActivity.class,
+                ListTenunActivity.class
         }
 )
 

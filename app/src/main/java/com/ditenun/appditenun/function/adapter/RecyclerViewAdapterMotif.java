@@ -17,6 +17,7 @@ import com.ditenun.appditenun.dependency.models.MotifTenun;
 import com.ditenun.appditenun.dependency.modules.APIModule;
 import com.ditenun.appditenun.function.activity.GenerateMotifActivity;
 import com.ditenun.appditenun.function.util.IntentParams;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -45,25 +46,11 @@ public class RecyclerViewAdapterMotif extends RecyclerView.Adapter<RecyclerViewA
         int models = position+1;
         holder.model_generate.setText("Model "+models);
         String imgUrl = APIModule.ENDPOINT + mData.get(position).getImageMotif();
-        Glide glide = null;
-
-        glide.with(holder.hasil_generate.getContext())
-                .load(imgUrl)
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .override(256, 250)
-                .centerCrop()
-                .fitCenter()
-                .crossFade()
-                .into(holder.hasil_generate);
-
-        holder.hasil_generate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, GenerateMotifActivity.class);
-                intent.putExtra(IntentParams.TENUN_IMAGE_ID, mData.get(position).getId());
-
-                mContext.startActivity(intent);
-            }
+        Picasso.with(holder.hasil_generate.getContext()).load(imgUrl).into(holder.hasil_generate);
+        holder.hasil_generate.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, GenerateMotifActivity.class);
+            intent.putExtra(IntentParams.TENUN_IMAGE_ID, mData.get(position).getId());
+            mContext.startActivity(intent);
         });
     }
 

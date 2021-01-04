@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,15 +54,6 @@ import static com.ditenun.appditenun.function.activity.GenerateMotifActivity.EDI
 
 public class GenerateKristikActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar mainToolbar;
-
-    @BindView(R.id.save_button)
-    Button saveButton;
-
-    @BindView(R.id.home_button)
-    Button homeButton;
-
     @BindView(R.id.kristik_zoom_layout)
     public ZoomLayout kristikZoomLayout;
 
@@ -82,6 +78,15 @@ public class GenerateKristikActivity extends AppCompatActivity {
     @BindView(R.id.edit_button)
     Button editButton;
 
+    @BindView(R.id.ly_generate_kristik_configuration)
+    LinearLayout lyGenerateKristikConfiguration;
+
+    @BindView(R.id.btn_to_web_app)
+    Button btnToWebApp;
+
+    @BindView(R.id.ly_to_web_app)
+    LinearLayout lyToWebApp;
+
     @Inject
     TenunNetworkInterface tenunNetworkInterface;
 
@@ -105,25 +110,19 @@ public class GenerateKristikActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        setupToolbar();
-
         if (readIntentParam()) {
             setupCurrentView();
         } else {
             Toast.makeText(getApplicationContext(), "Tidak dapat membaca gambar!", Toast.LENGTH_LONG).show();
         }
-
-        setupDisplay();
-
         registerListener();
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        if(kristikBitmap!= null){
+        if (kristikBitmap != null) {
             dialogConfirmation();
-        }
-        else {
+        } else {
             onBackPressed();
             finish();
         }
@@ -132,10 +131,9 @@ public class GenerateKristikActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(kristikBitmap!= null){
+        if (kristikBitmap != null) {
             dialogConfirmation();
-        }
-        else {
+        } else {
             super.onBackPressed();
             finish();
         }
@@ -146,8 +144,7 @@ public class GenerateKristikActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == EDIT_IMAGE_INTENT_CODE && resultCode == RESULT_OK)
-        {
+        if (requestCode == EDIT_IMAGE_INTENT_CODE && resultCode == RESULT_OK) {
             String path = data.getStringExtra(IntentParams.IMAGE_PATH);
             boolean needDeleted = data.getBooleanExtra(IntentParams.DELETE_IMAGE_AFTER_READ, false);
 
@@ -170,19 +167,6 @@ public class GenerateKristikActivity extends AppCompatActivity {
         }
     }
 
-    private void setupToolbar() {
-        setSupportActionBar(mainToolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
-
-    private void setupDisplay() {
-        mainToolbar.setTitle(R.string.generate_kristik);
-        saveButton.setVisibility(View.INVISIBLE);
-        editButton.setVisibility(View.INVISIBLE);
-    }
-
     private boolean loadImageFromPath(String path, boolean needDeleted) {
         motifBytes = FileUtils.LoadImageFile(path, needDeleted);
 
@@ -203,30 +187,19 @@ public class GenerateKristikActivity extends AppCompatActivity {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveKristik();
-            }
-        });
-
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(kristikBitmap!= null){
-                    dialogHomeConfirmation();
-                }
-                else {
-                    startActivity(HomeActivity.createIntent(getApplicationContext()));
-                }
-
-            }
-        });
-
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startEditKristikActivity();
+            }
+        });
+
+        btnToWebApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("http://ditenun.com/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
     }
@@ -343,6 +316,8 @@ public class GenerateKristikActivity extends AppCompatActivity {
                     kristikBitmap = BitmapFactory.decodeStream(response.body().byteStream());
                     Bitmap showableKristik = BitmapUtils.drawableToBitmap(new KristikDrawable(kristikBitmap));
                     showKristikPreview(showableKristik);
+                    lyGenerateKristikConfiguration.setVisibility(View.GONE);
+                    lyToWebApp.setVisibility(View.VISIBLE);
                 }
 
                 hideLoading();
@@ -351,7 +326,8 @@ public class GenerateKristikActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
+                lyGenerateKristikConfiguration.setVisibility(View.VISIBLE);
+                lyToWebApp.setVisibility(View.GONE);
                 hideLoading();
             }
         });
@@ -378,16 +354,10 @@ public class GenerateKristikActivity extends AppCompatActivity {
 
     private void showLoading() {
         progressBar.setVisibility(View.VISIBLE);
-        generateButton.setEnabled(false);
-        saveButton.setVisibility(View.INVISIBLE);
-        editButton.setVisibility(View.INVISIBLE);
     }
 
     private void hideLoading() {
         progressBar.setVisibility(View.GONE);
-        generateButton.setEnabled(true);
-        saveButton.setVisibility(View.VISIBLE);
-        editButton.setVisibility(View.VISIBLE);
     }
 
     private void dialogConfirmation() {

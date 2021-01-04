@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.os.Handler;
 import android.view.View;
@@ -59,9 +60,6 @@ public class GenerateMotifActivity extends AppCompatActivity {
     @BindView(R.id.container)
     View rootContainer;
 
-    @BindView(R.id.toolbar)
-    Toolbar mainToolbar;
-
     @BindView(R.id.main_image_view)
     ImageView mainImageView;
 
@@ -74,14 +72,11 @@ public class GenerateMotifActivity extends AppCompatActivity {
     @BindView(R.id.generate_kristik_button)
     Button generateKristikButton;
 
-    @BindView(R.id.save_button)
-    Button saveButton;
-
-    @BindView(R.id.home_button)
-    Button homeButton;
+    @BindView(R.id.btn_back)
+    ImageView homeButton;
 
     @BindView(R.id.loading_progress_bar)
-    ProgressBar loading_progress_bar;
+    CardView loading_progress_bar;
 
     @Inject
     TenunNetworkInterface tenunNetworkInterface;
@@ -114,17 +109,7 @@ public class GenerateMotifActivity extends AppCompatActivity {
 
         registerListener();
 
-        setupToolbar();
-
         hideLoading();
-    }
-
-    private void setupToolbar() {
-        mainToolbar.setTitle(R.string.generate_motif);
-        setSupportActionBar(mainToolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -228,12 +213,12 @@ public class GenerateMotifActivity extends AppCompatActivity {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveMotif();
-            }
-        });
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                saveMotif();
+//            }
+//        });
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -242,7 +227,7 @@ public class GenerateMotifActivity extends AppCompatActivity {
                     dialogHomeConfirmation();
                 }
                 else {
-                    startActivity(HomeActivity.createIntent(getApplicationContext()));
+                    finish();
                 }
             }
         });
@@ -335,7 +320,11 @@ public class GenerateMotifActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     outputImageBitmap = BitmapFactory.decodeStream(response.body().byteStream());
                     showMotifPreview(outputImageBitmap);
+                    generateKristikButton.setEnabled(true);
+                    generateMotifButton.setEnabled(false);
                 } else {
+                    generateKristikButton.setEnabled(false);
+                    generateMotifButton.setEnabled(true);
                     showMessage(response.message());
                 }
 
@@ -346,6 +335,8 @@ public class GenerateMotifActivity extends AppCompatActivity {
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 showMessage(t.getLocalizedMessage());
                 hideLoading();
+                generateKristikButton.setEnabled(false);
+                generateMotifButton.setEnabled(true);
             }
         });
     }
@@ -370,15 +361,10 @@ public class GenerateMotifActivity extends AppCompatActivity {
 
         generateMotifButton.setEnabled(false);
         generateKristikButton.setEnabled(false);
-        saveButton.setEnabled(false);
     }
 
     private void hideLoading() {
         loading_progress_bar.setVisibility(View.GONE);
-
-        generateMotifButton.setEnabled(true);
-        generateKristikButton.setEnabled(true);
-        saveButton.setEnabled(true);
     }
 
     private void showMessage(String message) {
@@ -452,7 +438,6 @@ public class GenerateMotifActivity extends AppCompatActivity {
             @Override
             public void onPostive() {
                 confirmationDialog.dismiss();
-                startActivity(HomeActivity.createIntent(getApplicationContext()));
                 finish();
             }
 

@@ -28,13 +28,13 @@
                     android:tint="@color/gray_5" />
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_16sdp"
-                    android:text="@string/enter_address"
-                    android:textColor="@color/dark_blue" />
+                    android:textSize="@dimen/_14ssp"
+                    android:text="@string/enter_address" />
 
             </LinearLayout>
 
@@ -76,7 +76,7 @@
 
                 <TextView
                     android:id="@+id/address_title"
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_16sdp"
@@ -87,7 +87,7 @@
 
                 <EditText
                     android:id="@+id/et_address"
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_16sdp"
@@ -110,7 +110,7 @@
 
             <Button
                 android:id="@+id/btn_submit"
-                style="@style/Roboto.SemiBold"
+                style="@style/Roboto.Light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_16sdp"

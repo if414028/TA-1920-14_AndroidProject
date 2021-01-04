@@ -13,6 +13,8 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/dark_blue_2</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
     </style>
 
     <style name="AppTheme.FullScreen" parent="AppTheme.NoActionBar">
@@ -153,26 +155,46 @@
         <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="Roboto.Regular" parent="TextAppearance.AppCompat">
+    <style name="Roboto.Mono.Regular" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/regular</item>
     </style>
 
-    <style name="Roboto.Italic" parent="TextAppearance.AppCompat">
+    <style name="Roboto.Mono.Italic" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/italic</item>
     </style>
 
-    <style name="Roboto.Bold" parent="TextAppearance.AppCompat">
+    <style name="Roboto.Mono.Bold" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/bold</item>
     </style>
 
-    <style name="Roboto.SemiBold" parent="TextAppearance.AppCompat">
+    <style name="Roboto.Mono.SemiBold" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/semibold</item>
     </style>
 
-    <style name="Roboto.Light" parent="TextAppearance.AppCompat">
+    <style name="Roboto.Mono.Light" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/light</item>
     </style>
 
+    <style name="Roboto.Bold.Condensed" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/bold_condensed</item>
+    </style>
+
+    <style name="Roboto.Condensed" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/condensed</item>
+    </style>
+
+    <style name="Roboto.Regular" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="Roboto.Bold" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="Roboto.Light" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+    
     <style name="CheckboxSelector" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/blue_358ed7</item>
         <item name="android:colorControlActivated" tools:targetApi="lollipop">#0091ea</item>

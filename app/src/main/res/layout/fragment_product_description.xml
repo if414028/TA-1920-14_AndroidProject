@@ -28,11 +28,12 @@
                     android:tint="@color/gray_5" />
 
                 <TextView
-                    style="@style/Roboto.SemiBold"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/_16sdp"
+                    android:textSize="@dimen/_14ssp"
                     android:text="@string/product_description"
                     android:textColor="@color/dark_blue" />
 
@@ -55,7 +56,7 @@
 
                 <TextView
                     android:id="@+id/tv_product_description"
-                    style="@style/Roboto.Regular"
+                    style="@style/Roboto.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sample Description"

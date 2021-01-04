@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startHomeActivity() {
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ListTenunActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         startActivity(intent);
