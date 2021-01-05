@@ -130,8 +130,8 @@
         android:id="@+id/ly_to_web_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             style="@style/Roboto.Bold.Condensed"
@@ -175,6 +175,7 @@
 
             <TextView
                 android:id="@+id/square_size_label"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -192,6 +193,7 @@
 
                 <RadioButton
                     android:id="@+id/radioButtonKecil"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -200,6 +202,7 @@
 
                 <RadioButton
                     android:id="@+id/radioButtonSedang"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -207,6 +210,7 @@
 
                 <RadioButton
                     android:id="@+id/radioButtonBesar"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -223,6 +227,7 @@
 
             <TextView
                 android:id="@+id/color_size_label"
+                style="@style/Roboto.Bold.Condensed"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -241,6 +246,7 @@
 
                 <RadioButton
                     android:id="@+id/radioButton2Warna"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -248,6 +254,7 @@
 
                 <RadioButton
                     android:id="@+id/radioButton5Warna"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -256,6 +263,7 @@
 
                 <RadioButton
                     android:id="@+id/radioButton50Warna"
+                    style="@style/Roboto.Bold.Condensed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

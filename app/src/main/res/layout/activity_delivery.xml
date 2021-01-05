@@ -12,8 +12,8 @@
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="@dimen/_4sdp"
             app:cardBackgroundColor="@color/dark_blue_2"
+            app:cardElevation="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -49,8 +49,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:background="@color/white"
+                    android:orientation="horizontal"
                     android:padding="@dimen/_16sdp">
 
                     <ImageView
@@ -65,9 +65,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textSize="@dimen/_14ssp"
                         android:layout_marginLeft="@dimen/_16sdp"
-                        android:text="@string/delivery_title" />
+                        android:text="@string/delivery_title"
+                        android:textSize="@dimen/_14ssp" />
 
                 </LinearLayout>
 
@@ -309,7 +309,7 @@
                     android:weightSum="5">
 
                     <TextView
-                        style="@style/Roboto.Mono.SemiBold"
+                        style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -318,7 +318,7 @@
 
                     <TextView
                         android:id="@+id/tv_total_payment"
-                        style="@style/Roboto.Mono.SemiBold"
+                        style="@style/Roboto.Bold.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -360,12 +360,12 @@
                 <TextView
                     android:id="@+id/tv_total_value"
                     style="@style/Roboto.Bold.Condensed"
-                    android:textSize="@dimen/_14ssp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:text="Rp. 2.750.000,-"
                     android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_total_title" />
