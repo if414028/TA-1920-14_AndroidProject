@@ -85,9 +85,9 @@ public class DeliveryActivity extends AppCompatActivity {
 
             ItemOrderBinding itemBinding = (ItemOrderBinding) holder.getLayoutBinding();
             itemBinding.tvProductName.setText(item.getName());
-            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getPrice()));
-            itemBinding.tvSubTotalPrice.setText("Total: " + TextUtil.getInstance().formatToRp(item.getPrice() * item.getQty()));
-            Picasso.with(getApplicationContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgProduct);
+            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getPriceInDouble()));
+            itemBinding.tvSubTotalPrice.setText("Total: " + TextUtil.getInstance().formatToRp(item.getPriceInDouble() * item.getPurchasedStock()));
+            Picasso.with(getApplicationContext()).load(item.getImages().get(0).getSrc()).into(itemBinding.imgProduct);
         });
         binding.rvOrder.setAdapter(productAdapter);
         productAdapter.setMainData(viewModel.getOrder().getProduct());

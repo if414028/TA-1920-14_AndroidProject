@@ -75,9 +75,9 @@ public class ReviewPaymentActivity extends AppCompatActivity {
             ItemReviewPaymentProductBinding itemBinding = (ItemReviewPaymentProductBinding) holder.getLayoutBinding();
 
             itemBinding.tvProductName.setText(item.getName());
-            itemBinding.tvQty.setText(String.format("Jumlah %s", TextUtil.getInstance().formatToRp(item.getPrice())));
-            itemBinding.tvPrice.setText(String.format("%s / Unit", TextUtil.getInstance().formatToRp(item.getPrice() * item.getQty())));
-            Picasso.with(getApplicationContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgProduct);
+            itemBinding.tvQty.setText(String.format("Jumlah %s", TextUtil.getInstance().formatToRp(item.getPriceInDouble())));
+            itemBinding.tvPrice.setText(String.format("%s / Unit", TextUtil.getInstance().formatToRp(item.getPriceInDouble() * item.getPurchasedStock())));
+            Picasso.with(getApplicationContext()).load(item.getImages().get(0).getSrc()).into(itemBinding.imgProduct);
         });
         binding.rvProduct.setAdapter(productAdapter);
     }

@@ -68,10 +68,9 @@ public class CartActivity extends AppCompatActivity {
         cartAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_cart, (holder, item) -> {
             ItemCartBinding itemBinding = (ItemCartBinding) holder.getLayoutBinding();
             itemBinding.tvProductName.setText(item.getName());
-            itemBinding.tvSize.setText(item.getFeature());
-            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getPrice()));
-            itemBinding.etProductQty.setText(item.getQty().toString());
-            Picasso.with(getApplicationContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgProduct);
+            itemBinding.tvPrice.setText(TextUtil.getInstance().formatToRp(item.getPriceInDouble()));
+            itemBinding.etProductQty.setText(item.getPurchasedStock());
+            Picasso.with(getApplicationContext()).load(item.getImages().get(0).getSrc()).into(itemBinding.imgProduct);
         });
         binding.rvCart.setAdapter(cartAdapter);
     }

@@ -31,22 +31,22 @@ public class DetailProductViewModel extends AndroidViewModel {
     }
 
     public void increaseProductQty() {
-        if (product != null && product.getQty() != null) {
-            int currentQty = product.getQty();
+        if (product != null) {
+            int currentQty = product.getPurchasedStock();
             int resultQty = currentQty + 1;
-            product.setQty(resultQty);
-            increasePurchaseQtyEvent.postValue(product.getQty());
+            product.setPurchasedStock(resultQty);
+            increasePurchaseQtyEvent.postValue(product.getPurchasedStock());
         }
     }
 
     public void decreaseProductQty() {
-        if (product != null && product.getQty() != null) {
-            int currentQty = product.getQty();
+        if (product != null) {
+            int currentQty = product.getPurchasedStock();
             int resultQty;
             if (currentQty > 1) resultQty = currentQty - 1;
             else resultQty = 1;
-            product.setQty(resultQty);
-            decreasePurchaseQtyEvent.postValue(product.getQty());
+            product.setPurchasedStock(resultQty);
+            decreasePurchaseQtyEvent.postValue(product.getPurchasedStock());
         }
     }
 

@@ -3,18 +3,76 @@ package com.ditenun.appditenun.dependency.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Product implements Parcelable {
 
+    @SerializedName("id")
     private Integer id;
+
+    @SerializedName("name")
     private String name;
-    private Double price;
+
+    @SerializedName("slug")
+    private String slug;
+
+    @SerializedName("permalink")
+    private String permalink;
+
+    @SerializedName("date_created")
+    private String dateCreated;
+
+    @SerializedName("status")
+    private String status;
+
+    @SerializedName("catalog_visibility")
+    private String catalogVisibility;
+
+    @SerializedName("description")
     private String description;
-    private String dimension;
-    private String feature;
-    private List<String> imageUrls;
-    private Integer qty;
+
+    @SerializedName("short_description")
+    private String shortDescription;
+
+    @SerializedName("sku")
+    private String sku;
+
+    @SerializedName("price")
+    private String price;
+
+    @SerializedName("regular_price")
+    private String regularPrice;
+
+    @SerializedName("sale_price")
+    private String salePrice;
+
+    @SerializedName("on_sale")
+    private Boolean onSale;
+
+    @SerializedName("purchasable")
+    private Boolean purchasable;
+
+    @SerializedName("stock_quantity")
+    private Integer stockQuantity;
+
+    @SerializedName("stock_status")
+    private String stockStatus;
+
+    @SerializedName("weight")
+    private String weight;
+
+    @SerializedName("dimensions")
+    private ProductDimension dimensions;
+
+    @SerializedName("images")
+    private List<ProductImages> images;
+
+    @SerializedName("attributes")
+    private List<ProductAttributes> attributes;
+
+    private int purchasedStock;
 
     public Product() {
     }
@@ -26,20 +84,32 @@ public class Product implements Parcelable {
             id = in.readInt();
         }
         name = in.readString();
-        if (in.readByte() == 0) {
-            price = null;
-        } else {
-            price = in.readDouble();
-        }
+        slug = in.readString();
+        permalink = in.readString();
+        dateCreated = in.readString();
+        status = in.readString();
+        catalogVisibility = in.readString();
         description = in.readString();
-        dimension = in.readString();
-        feature = in.readString();
-        imageUrls = in.createStringArrayList();
+        shortDescription = in.readString();
+        sku = in.readString();
+        price = in.readString();
+        regularPrice = in.readString();
+        salePrice = in.readString();
+        byte tmpOnSale = in.readByte();
+        onSale = tmpOnSale == 0 ? null : tmpOnSale == 1;
+        byte tmpPurchasable = in.readByte();
+        purchasable = tmpPurchasable == 0 ? null : tmpPurchasable == 1;
         if (in.readByte() == 0) {
-            qty = null;
+            stockQuantity = null;
         } else {
-            qty = in.readInt();
+            stockQuantity = in.readInt();
         }
+        stockStatus = in.readString();
+        weight = in.readString();
+        dimensions = in.readParcelable(ProductDimension.class.getClassLoader());
+        images = in.createTypedArrayList(ProductImages.CREATOR);
+        attributes = in.createTypedArrayList(ProductAttributes.CREATOR);
+        purchasedStock = in.readInt();
     }
 
     @Override
@@ -51,22 +121,31 @@ public class Product implements Parcelable {
             dest.writeInt(id);
         }
         dest.writeString(name);
-        if (price == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(price);
-        }
+        dest.writeString(slug);
+        dest.writeString(permalink);
+        dest.writeString(dateCreated);
+        dest.writeString(status);
+        dest.writeString(catalogVisibility);
         dest.writeString(description);
-        dest.writeString(dimension);
-        dest.writeString(feature);
-        dest.writeStringList(imageUrls);
-        if (qty == null) {
+        dest.writeString(shortDescription);
+        dest.writeString(sku);
+        dest.writeString(price);
+        dest.writeString(regularPrice);
+        dest.writeString(salePrice);
+        dest.writeByte((byte) (onSale == null ? 0 : onSale ? 1 : 2));
+        dest.writeByte((byte) (purchasable == null ? 0 : purchasable ? 1 : 2));
+        if (stockQuantity == null) {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeInt(qty);
+            dest.writeInt(stockQuantity);
         }
+        dest.writeString(stockStatus);
+        dest.writeString(weight);
+        dest.writeParcelable(dimensions, flags);
+        dest.writeTypedList(images);
+        dest.writeTypedList(attributes);
+        dest.writeInt(purchasedStock);
     }
 
     @Override
@@ -102,12 +181,44 @@ public class Product implements Parcelable {
         this.name = name;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getSlug() {
+        return slug;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public String getPermalink() {
+        return permalink;
+    }
+
+    public void setPermalink(String permalink) {
+        this.permalink = permalink;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCatalogVisibility() {
+        return catalogVisibility;
+    }
+
+    public void setCatalogVisibility(String catalogVisibility) {
+        this.catalogVisibility = catalogVisibility;
     }
 
     public String getDescription() {
@@ -118,35 +229,130 @@ public class Product implements Parcelable {
         this.description = description;
     }
 
-    public String getDimension() {
-        return dimension;
+    public String getShortDescription() {
+        return shortDescription;
     }
 
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
-    public String getFeature() {
-        return feature;
+    public String getSku() {
+        return sku;
     }
 
-    public void setFeature(String feature) {
-        this.feature = feature;
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
-    public List<String> getImageUrls() {
-        return imageUrls;
+    public String getPrice() {
+        return price;
     }
 
-    public void setImageUrls(List<String> imageUrls) {
-        this.imageUrls = imageUrls;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public Integer getQty() {
-        return qty;
+    public String getRegularPrice() {
+        return regularPrice;
     }
 
-    public void setQty(Integer qty) {
-        this.qty = qty;
+    public void setRegularPrice(String regularPrice) {
+        this.regularPrice = regularPrice;
+    }
+
+    public String getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(String salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public Boolean getOnSale() {
+        return onSale;
+    }
+
+    public void setOnSale(Boolean onSale) {
+        this.onSale = onSale;
+    }
+
+    public Boolean getPurchasable() {
+        return purchasable;
+    }
+
+    public void setPurchasable(Boolean purchasable) {
+        this.purchasable = purchasable;
+    }
+
+    public Integer getStockQuantity() {
+        if (stockQuantity != null){
+            return stockQuantity;
+        }
+        return 0;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+
+    public String getStockStatus() {
+        return stockStatus;
+    }
+
+    public void setStockStatus(String stockStatus) {
+        this.stockStatus = stockStatus;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public ProductDimension getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(ProductDimension dimensions) {
+        this.dimensions = dimensions;
+    }
+
+    public List<ProductImages> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ProductImages> images) {
+        this.images = images;
+    }
+
+    public List<ProductAttributes> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<ProductAttributes> attributes) {
+        this.attributes = attributes;
+    }
+
+    public int getPurchasedStock() {
+        return purchasedStock;
+    }
+
+    public void setPurchasedStock(int purchasedStock) {
+        this.purchasedStock = purchasedStock;
+    }
+
+    public Double getPriceInDouble() {
+        return Double.valueOf(price);
+    }
+
+    public Double getRegularPriceInDouble() {
+        return Double.valueOf(regularPrice);
+    }
+
+    public Double getSalePriceInDouble() {
+        return Double.parseDouble(salePrice);
     }
 }

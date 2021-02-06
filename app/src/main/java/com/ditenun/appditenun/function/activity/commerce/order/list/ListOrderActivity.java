@@ -66,8 +66,8 @@ public class ListOrderActivity extends AppCompatActivity {
                 ItemNewArrivalsBinding productItemBinding = (ItemNewArrivalsBinding) productHolder.getLayoutBinding();
                 productItemBinding.lyPrice.setVisibility(View.GONE);
                 if (productItem != null) {
-                    if (productItem.getImageUrls() != null) {
-                        Picasso.with(getApplicationContext()).load(productItem.getImageUrls().get(0)).into(productItemBinding.imgNewArrivals);
+                    if (productItem.getImages() != null) {
+                        Picasso.with(getApplicationContext()).load(productItem.getImages().get(0).getSrc()).into(productItemBinding.imgNewArrivals);
                     }
                 }
             });

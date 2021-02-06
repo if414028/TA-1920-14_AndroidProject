@@ -20,12 +20,20 @@ import com.ditenun.appditenun.databinding.ItemProductColorBinding;
 import com.ditenun.appditenun.dependency.models.Order;
 import com.ditenun.appditenun.dependency.models.Product;
 import com.ditenun.appditenun.dependency.models.ProductColor;
+import com.ditenun.appditenun.dependency.models.ProductImages;
+import com.ditenun.appditenun.dependency.modules.WooCommerceApiClient;
+import com.ditenun.appditenun.dependency.network.WooCommerceApiInterface;
 import com.ditenun.appditenun.function.activity.commerce.cart.CartActivity;
 import com.ditenun.appditenun.function.util.SimpleRecyclerAdapter;
 import com.ditenun.appditenun.function.util.TextUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailProductActivity extends AppCompatActivity {
 
@@ -111,18 +119,17 @@ public class DetailProductActivity extends AppCompatActivity {
             @Override
             public void onChanged(Void aVoid) {
                 binding.lyProductImage.removeAllSliders();
-                for (String imageUrl : viewModel.getProduct().getImageUrls()) {
+                for (ProductImages imageUrl : viewModel.getProduct().getImages()) {
                     if (imageUrl != null) {
                         TextSliderView textSliderView = new TextSliderView(getApplicationContext());
-                        textSliderView.image(imageUrl).setScaleType(BaseSliderView.ScaleType.CenterCrop);
+                        textSliderView.image(imageUrl.getSrc()).setScaleType(BaseSliderView.ScaleType.CenterInside);
                         binding.lyProductImage.addSlider(textSliderView);
                     }
                 }
-                binding.etSize.setText(viewModel.getProduct().getDimension());
                 binding.tvProductNameAppBar.setText(viewModel.getProduct().getName());
                 binding.tvProductName.setText(viewModel.getProduct().getName());
-                binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(viewModel.getProduct().getPrice()));
-                binding.tvProductQty.setText(viewModel.getProduct().getQty().toString());
+                binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(viewModel.getProduct().getPriceInDouble()));
+                binding.tvProductQty.setText(viewModel.getProduct().getStockQuantity().toString());
             }
         });
 

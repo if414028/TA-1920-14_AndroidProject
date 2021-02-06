@@ -81,7 +81,7 @@ public class DeliveryViewModel extends AndroidViewModel {
         double totalPrice = 0.0;
         if (order.getProduct() != null && !order.getProduct().isEmpty()) {
             for (Product item : order.getProduct()) {
-                totalPrice += (item.getPrice() * item.getQty());
+                totalPrice += (item.getPriceInDouble() * item.getPurchasedStock());
             }
         }
         return totalPrice;

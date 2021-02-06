@@ -31,7 +31,7 @@ public class CartViewModel extends AndroidViewModel {
     public Double calculateTotalPrice() {
         Double totalPrice = 0.0;
         for (Product item : order.getProduct()) {
-            totalPrice += (item.getPrice() * item.getQty());
+            totalPrice += (item.getPriceInDouble() * item.getPurchasedStock());
         }
         return totalPrice;
     }
