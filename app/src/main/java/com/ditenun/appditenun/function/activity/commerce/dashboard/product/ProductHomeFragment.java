@@ -107,6 +107,7 @@ public class ProductHomeFragment extends Fragment {
             itemBinding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(item.getPriceInDouble()));
             itemBinding.getRoot().setOnClickListener(v -> {
                 Intent intent = new Intent(getContext(), DetailProductActivity.class);
+                intent.putExtra("product_id", item.getId());
                 intent.putExtra("product", item);
                 startActivity(intent);
             });
