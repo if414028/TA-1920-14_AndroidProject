@@ -197,7 +197,7 @@ public class GenerateKristikActivity extends AppCompatActivity {
         btnToWebApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri uri = Uri.parse("http://ditenun.com/");
+                Uri uri = Uri.parse("https://ditenun.com/webapp/user/dashboard");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
