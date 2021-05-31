@@ -73,12 +73,12 @@ public class ProductFragment extends Fragment {
         productAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_new_arrivals, (holder, item) -> {
             ItemNewArrivalsBinding itemBinding = (ItemNewArrivalsBinding) holder.getLayoutBinding();
             if (item != null) {
-                if (item.getImageUrls() != null) {
-                    Picasso.with(getContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgNewArrivals);
+                if (item.getImages() != null) {
+                    Picasso.with(getContext()).load(item.getImages().get(0).getSrc()).into(itemBinding.imgNewArrivals);
                 }
             }
             itemBinding.tvProductName.setText(item.getName());
-            itemBinding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(item.getPrice()));
+            itemBinding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(item.getPriceInDouble()));
             itemBinding.getRoot().setOnClickListener(v -> {
                 Intent intent = new Intent(getContext(), DetailProductActivity.class);
                 intent.putExtra("product", item);

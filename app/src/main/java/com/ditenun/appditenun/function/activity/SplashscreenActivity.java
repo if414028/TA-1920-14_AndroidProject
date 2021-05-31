@@ -182,7 +182,7 @@ public class SplashscreenActivity extends AppCompatActivity {
 
 
     private void startLoginActivity() {
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         startActivity(intent);

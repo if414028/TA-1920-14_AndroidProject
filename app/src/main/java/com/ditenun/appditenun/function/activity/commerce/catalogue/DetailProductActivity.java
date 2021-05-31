@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -20,18 +22,27 @@ import com.ditenun.appditenun.databinding.ItemProductColorBinding;
 import com.ditenun.appditenun.dependency.models.Order;
 import com.ditenun.appditenun.dependency.models.Product;
 import com.ditenun.appditenun.dependency.models.ProductColor;
+import com.ditenun.appditenun.dependency.models.ProductImages;
+import com.ditenun.appditenun.dependency.modules.WooCommerceApiClient;
+import com.ditenun.appditenun.dependency.network.WooCommerceApiInterface;
 import com.ditenun.appditenun.function.activity.commerce.cart.CartActivity;
 import com.ditenun.appditenun.function.util.SimpleRecyclerAdapter;
 import com.ditenun.appditenun.function.util.TextUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailProductActivity extends AppCompatActivity {
 
     private ActivityDetailProductBinding binding;
     private DetailProductViewModel viewModel;
-    private SimpleRecyclerAdapter<ProductColor> colorAdapter;
+    private SimpleRecyclerAdapter<String> colorAdapter;
+    private ArrayAdapter<String> sizeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +57,8 @@ public class DetailProductActivity extends AppCompatActivity {
     private void getAdditionalData() {
         Intent intent = getIntent();
         if (intent != null) {
-            if (intent.hasExtra("product")) {
-                viewModel.setProduct(intent.getParcelableExtra("product"));
+            if (intent.hasExtra("product_id")) {
+                viewModel.fetchDetailProduct(intent.getIntExtra("product_id", 0));
             }
         }
 
@@ -66,6 +77,7 @@ public class DetailProductActivity extends AppCompatActivity {
         binding.btnIncreaseQty.setOnClickListener(view -> viewModel.increaseProductQty());
         binding.btnDecreaseQty.setOnClickListener(view -> viewModel.decreaseProductQty());
         setupColorAdapter();
+        setupSizeSpinner();
     }
 
     private void setupColorAdapter() {
@@ -74,36 +86,57 @@ public class DetailProductActivity extends AppCompatActivity {
 
             ItemProductColorBinding itemBinding = (ItemProductColorBinding) holder.getLayoutBinding();
 
-            switch (item.getColorName()) {
-                case "RED": {
+            switch (item) {
+                case "Merah": {
                     itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.colorRed));
                     break;
                 }
-                case "BLUE": {
+                case "Biru": {
                     itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.colorBlue));
                     break;
                 }
-                case "GREEN": {
+                case "Hijau": {
                     itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.colorGreen));
                     break;
                 }
+                case "Kuning": {
+                    itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.colorYellow));
+                    break;
+                }
+                case "Hitam": {
+                    itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.black));
+                }
             }
 
-            if (item.isSelected()) {
+            if (item.equalsIgnoreCase(viewModel.getSelectedColor())) {
                 itemBinding.selectedColorIndicator.setVisibility(View.VISIBLE);
             } else {
                 itemBinding.selectedColorIndicator.setVisibility(View.INVISIBLE);
             }
 
             itemBinding.colorValue.setOnClickListener(view -> {
-                viewModel.setSelectedColor(item.getColorCode());
+                viewModel.setSelectedColor(item);
                 colorAdapter.notifyDataSetChanged();
             });
 
         });
         binding.rvColor.setAdapter(colorAdapter);
-        colorAdapter.setMainData(viewModel.getProductColorList());
-        colorAdapter.notifyDataSetChanged();
+    }
+
+    private void setupSizeSpinner() {
+        sizeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, new ArrayList<>());
+        binding.spinnerSize.setAdapter(sizeAdapter);
+        binding.spinnerSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                viewModel.setSelectedSize(sizeAdapter.getItem(i));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     private void observeLiveData() {
@@ -111,23 +144,41 @@ public class DetailProductActivity extends AppCompatActivity {
             @Override
             public void onChanged(Void aVoid) {
                 binding.lyProductImage.removeAllSliders();
-                for (String imageUrl : viewModel.getProduct().getImageUrls()) {
+                for (ProductImages imageUrl : viewModel.getProduct().getImages()) {
                     if (imageUrl != null) {
                         TextSliderView textSliderView = new TextSliderView(getApplicationContext());
-                        textSliderView.image(imageUrl).setScaleType(BaseSliderView.ScaleType.CenterCrop);
+                        textSliderView.image(imageUrl.getSrc()).setScaleType(BaseSliderView.ScaleType.CenterInside);
                         binding.lyProductImage.addSlider(textSliderView);
                     }
                 }
-                binding.etSize.setText(viewModel.getProduct().getDimension());
                 binding.tvProductNameAppBar.setText(viewModel.getProduct().getName());
                 binding.tvProductName.setText(viewModel.getProduct().getName());
-                binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(viewModel.getProduct().getPrice()));
-                binding.tvProductQty.setText(viewModel.getProduct().getQty().toString());
+                binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(viewModel.getProduct().getPriceInDouble()));
+                binding.tvProductQty.setText(viewModel.getProduct().getStockQuantity().toString());
+                setColorList();
+                setSizeList();
             }
         });
 
         viewModel.getIncreasePurchaseQtyEvent().observe(this, qty -> binding.tvProductQty.setText(qty.toString()));
         viewModel.getDecreasePurchaseQtyEvent().observe(this, qty -> binding.tvProductQty.setText(qty.toString()));
+    }
+
+    private void setColorList() {
+        if (viewModel.getProductColorList().size() > 0) {
+            binding.lyColorPicker.setVisibility(View.VISIBLE);
+            colorAdapter.setMainData(viewModel.getProductColorList());
+            colorAdapter.notifyDataSetChanged();
+        } else {
+            binding.lyColorPicker.setVisibility(View.GONE);
+        }
+    }
+
+    private void setSizeList() {
+        if (viewModel.getProductSizeList().size() > 0) {
+            sizeAdapter.addAll(viewModel.getProductSizeList());
+            sizeAdapter.notifyDataSetChanged();
+        }
     }
 
     private void orderProduct() {

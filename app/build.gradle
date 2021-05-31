@@ -150,4 +150,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
+    implementation 'oauth.signpost:signpost-core:1.2.1.2'
+    implementation 'se.akerfeldt:okhttp-signpost:1.1.0'
 }

@@ -99,7 +99,7 @@
                         android:id="@+id/ly_product_image"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_250sdp"
-                        android:background="@color/gray_5"
+                        android:background="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -159,8 +159,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_product_price" />
 
-                    <EditText
-                        android:id="@+id/et_size"
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner_size"
                         style="@style/Roboto.Condensed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -168,9 +168,9 @@
                         android:layout_marginLeft="@dimen/_16sdp"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:layout_marginRight="@dimen/_8sdp"
+                        android:paddingLeft="@dimen/_8sdp"
+                        android:paddingRight="@dimen/_8sdp"
                         android:background="@drawable/edittext_rounded"
-                        android:editable="false"
-                        android:padding="@dimen/_10sdp"
                         android:textColor="@color/dark_blue"
                         app:layout_constraintEnd_toStartOf="@id/ly_amount"
                         app:layout_constraintStart_toStartOf="parent"
@@ -199,7 +199,7 @@
                         android:paddingRight="@dimen/_16sdp"
                         android:weightSum="3"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/et_size"
+                        app:layout_constraintStart_toEndOf="@id/spinner_size"
                         app:layout_constraintTop_toBottomOf="@id/tv_product_amount_title">
 
                         <TextView
@@ -256,7 +256,7 @@
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/et_size">
+                        app:layout_constraintTop_toBottomOf="@id/spinner_size">
 
                         <TextView
                             android:id="@+id/tv_color_picker"

@@ -7,98 +7,76 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.ditenun.appditenun.dependency.models.Category;
 import com.ditenun.appditenun.dependency.models.Product;
-import com.ditenun.appditenun.dependency.network.TenunNetworkInterface;
+import com.ditenun.appditenun.dependency.modules.WooCommerceApiClient;
+import com.ditenun.appditenun.dependency.network.WooCommerceApiInterface;
 import com.ditenun.appditenun.function.util.SingleLiveEvent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProductHomeViewModel extends AndroidViewModel {
-
-    private FirebaseDatabase rootDatabase;
-    private DatabaseReference reference;
-
-    @Inject
-    TenunNetworkInterface tenunNetworkInterface;
 
     private SingleLiveEvent<Void> successGetListProductEvent = new SingleLiveEvent<>();
     private SingleLiveEvent<DatabaseError> errorGetListProductEvent = new SingleLiveEvent<>();
     private List<Product> newArrivalsProductList = new ArrayList<>();
     private List<Category> categoryList = new ArrayList<>();
 
+    private SingleLiveEvent<Void> successGetListCategories = new SingleLiveEvent<>();
+    private SingleLiveEvent<Void> errorGetListCategories = new SingleLiveEvent<>();
+
     public void fetchAllProduct() {
-        rootDatabase = FirebaseDatabase.getInstance();
-        reference = rootDatabase.getReference("products");
-        reference.addValueEventListener(new ValueEventListener() {
+        WooCommerceApiInterface apiInterface = WooCommerceApiClient.createService(WooCommerceApiInterface.class, WooCommerceApiClient.CONSUMER_KEY, WooCommerceApiClient.CONSUMER_SECRET);
+        Call<List<Product>> call = apiInterface.getListProducts();
+        call.enqueue(new Callback<List<Product>>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChildren()) {
-                    for (DataSnapshot child : dataSnapshot.getChildren()) {
-                        Product product = child.getValue(Product.class);
-                        List<String> imageUrls = new ArrayList<>();
-                        if (product != null) {
-                            for (String imageUrl : product.getImageUrls()) {
-                                if (imageUrl != null) {
-                                    imageUrls.add(imageUrl);
-                                }
-                            }
-                            product.setImageUrls(imageUrls);
-                            product.setQty(1);
-                            newArrivalsProductList.add(product);
-                        }
-                    }
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (response.body() != null && !response.body().isEmpty()) {
+                    newArrivalsProductList = response.body();
+                    successGetListProductEvent.callFromBackgroundThread();
                 }
-                successGetListProductEvent.callFromBackgroundThread();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                errorGetListProductEvent.postValue(databaseError);
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                errorGetListProductEvent.callFromBackgroundThread();
             }
         });
     }
 
     public ProductHomeViewModel(@NonNull Application application) {
         super(application);
-        setupCategoryList();
     }
 
-    public void clearProductList(){
+    public void clearProductList() {
         this.newArrivalsProductList.clear();
     }
 
-    private void setupCategoryList() {
-        Category category1 = new Category();
-        category1.setCategoryId("1");
-        category1.setCategoryName("category");
-        category1.setCategoryImage("https://picsum.photos/id/271/200/300");
-        categoryList.add(category1);
+    public void fetchListCategories() {
+        WooCommerceApiInterface apiInterface = WooCommerceApiClient.createService(WooCommerceApiInterface.class, WooCommerceApiClient.CONSUMER_KEY, WooCommerceApiClient.CONSUMER_SECRET);
+        Call<List<Category>> call = apiInterface.getListCategories();
+        call.enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                if (response.body() != null && !response.body().isEmpty()) {
+                    categoryList = response.body();
+                    successGetListCategories.callFromBackgroundThread();
+                }
+            }
 
-        Category category2 = new Category();
-        category2.setCategoryId("1");
-        category2.setCategoryName("category");
-        category2.setCategoryImage("https://picsum.photos/id/272/200/300");
-        categoryList.add(category2);
-
-        Category category3 = new Category();
-        category3.setCategoryId("1");
-        category3.setCategoryName("category");
-        category3.setCategoryImage("https://picsum.photos/id/273/200/300");
-        categoryList.add(category3);
-
-        Category category4 = new Category();
-        category4.setCategoryId("1");
-        category4.setCategoryName("category");
-        category4.setCategoryImage("https://picsum.photos/id/274/200/300");
-        categoryList.add(category4);
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                errorGetListCategories.callFromBackgroundThread();
+            }
+        });
     }
 
     public List<Product> getNewArrivalsProductList() {
@@ -115,5 +93,13 @@ public class ProductHomeViewModel extends AndroidViewModel {
 
     public SingleLiveEvent<DatabaseError> getErrorGetListProductEvent() {
         return errorGetListProductEvent;
+    }
+
+    public SingleLiveEvent<Void> getSuccessGetListCategories() {
+        return successGetListCategories;
+    }
+
+    public SingleLiveEvent<Void> getErrorGetListCategories() {
+        return errorGetListCategories;
     }
 }

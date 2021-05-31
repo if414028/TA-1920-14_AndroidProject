@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 
 import com.ditenun.appditenun.dependency.models.Product;
+import com.ditenun.appditenun.dependency.modules.WooCommerceApiClient;
+import com.ditenun.appditenun.dependency.network.WooCommerceApiInterface;
 import com.ditenun.appditenun.function.util.SingleLiveEvent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,43 +16,31 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private FirebaseDatabase rootDatabase;
-    private DatabaseReference reference;
+public class ProductViewModel extends ViewModel {
 
     private SingleLiveEvent<Void> successGetListProductEvent = new SingleLiveEvent<>();
     private SingleLiveEvent<DatabaseError> errorGetListProductEvent = new SingleLiveEvent<>();
     private List<Product> productList = new ArrayList<>();
 
     public void fetchListProduct() {
-        rootDatabase = FirebaseDatabase.getInstance();
-        reference = rootDatabase.getReference("products");
-        reference.addValueEventListener(new ValueEventListener() {
+        WooCommerceApiInterface apiInterface = WooCommerceApiClient.createService(WooCommerceApiInterface.class, WooCommerceApiClient.CONSUMER_KEY, WooCommerceApiClient.CONSUMER_SECRET);
+        Call<List<Product>> call = apiInterface.getListProducts();
+        call.enqueue(new Callback<List<Product>>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChildren()) {
-                    for (DataSnapshot child : dataSnapshot.getChildren()) {
-                        Product product = child.getValue(Product.class);
-                        List<String> imageUrls = new ArrayList<>();
-                        if (product != null) {
-                            for (String imageUrl : product.getImageUrls()) {
-                                if (imageUrl != null) {
-                                    imageUrls.add(imageUrl);
-                                }
-                            }
-                            product.setImageUrls(imageUrls);
-                            product.setQty(1);
-                            productList.add(product);
-                        }
-                    }
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (response.body() != null && !response.body().isEmpty()) {
+                    productList = response.body();
+                    successGetListProductEvent.callFromBackgroundThread();
                 }
-                successGetListProductEvent.callFromBackgroundThread();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                errorGetListProductEvent.postValue(databaseError);
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                errorGetListProductEvent.callFromBackgroundThread();
             }
         });
     }

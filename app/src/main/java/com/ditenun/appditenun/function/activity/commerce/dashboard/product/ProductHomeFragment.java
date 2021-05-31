@@ -16,14 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.ditenun.appditenun.R;
 import com.ditenun.appditenun.databinding.ItemCategoryBinding;
 import com.ditenun.appditenun.databinding.ItemNewArrivalsBinding;
 import com.ditenun.appditenun.databinding.ProductHomeFragmentBinding;
+import com.ditenun.appditenun.dependency.App;
 import com.ditenun.appditenun.dependency.models.Category;
 import com.ditenun.appditenun.dependency.models.Product;
+import com.ditenun.appditenun.dependency.network.TenunNetworkInterface;
 import com.ditenun.appditenun.function.activity.commerce.catalogue.DetailProductActivity;
 import com.ditenun.appditenun.function.util.SimpleRecyclerAdapter;
 import com.ditenun.appditenun.function.util.TextUtil;
@@ -31,6 +34,8 @@ import com.google.firebase.database.DatabaseError;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 public class ProductHomeFragment extends Fragment {
 
@@ -66,12 +71,13 @@ public class ProductHomeFragment extends Fragment {
         super.onResume();
         mViewModel.clearProductList();
         mViewModel.fetchAllProduct();
+        mViewModel.fetchListCategories();
     }
 
     private void initLayout() {
         initImageSlider();
         initNewArrivalsRecyclerView();
-//        initCategoryRecyclerView();
+        initCategoryRecyclerView();
     }
 
     private void initImageSlider() {
@@ -93,14 +99,15 @@ public class ProductHomeFragment extends Fragment {
         newArrivalsAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_new_arrivals, (holder, item) -> {
             ItemNewArrivalsBinding itemBinding = (ItemNewArrivalsBinding) holder.getLayoutBinding();
             if (item != null) {
-                if (item.getImageUrls() != null) {
-                    Picasso.with(getContext()).load(item.getImageUrls().get(0)).into(itemBinding.imgNewArrivals);
+                if (item.getImages() != null) {
+                    Picasso.with(getContext()).load(item.getImages().get(0).getSrc()).into(itemBinding.imgNewArrivals);
                 }
             }
             itemBinding.tvProductName.setText(item.getName());
-            itemBinding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(item.getPrice()));
+            itemBinding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(item.getPriceInDouble()));
             itemBinding.getRoot().setOnClickListener(v -> {
                 Intent intent = new Intent(getContext(), DetailProductActivity.class);
+                intent.putExtra("product_id", item.getId());
                 intent.putExtra("product", item);
                 startActivity(intent);
             });
@@ -108,15 +115,19 @@ public class ProductHomeFragment extends Fragment {
         binding.rvNewArrivals.setAdapter(newArrivalsAdapter);
     }
 
-//    private void initCategoryRecyclerView() {
-//        binding.rvCategory.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-//        categoryAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_category, (holder, item) -> {
-//            ItemCategoryBinding itemBinding = (ItemCategoryBinding) holder.getLayoutBinding();
-//            Picasso.with(getContext()).load(item.getCategoryImage()).into(itemBinding.ivCategory);
-//        });
-//        binding.rvCategory.setAdapter(categoryAdapter);
-//        categoryAdapter.setMainData(mViewModel.getCategoryList());
-//    }
+    private void initCategoryRecyclerView() {
+        binding.rvCategory.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        categoryAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_category, (holder, item) -> {
+            ItemCategoryBinding itemBinding = (ItemCategoryBinding) holder.getLayoutBinding();
+            if (item.getCategoryImage() != null) {
+                Picasso.with(getContext()).load(item.getCategoryImage()).into(itemBinding.ivCategory);
+            } else {
+                itemBinding.ivCategory.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_broken_image_24));
+            }
+            itemBinding.tvCategoryName.setText(item.getCategoryName());
+        });
+        binding.rvCategory.setAdapter(categoryAdapter);
+    }
 
     private void observeLiveEvent() {
         mViewModel.getSuccessGetListProductEvent().observe(this, aVoid -> {
@@ -126,6 +137,20 @@ public class ProductHomeFragment extends Fragment {
         });
         mViewModel.getErrorGetListProductEvent().observe(this, databaseError -> {
             binding.progressBar.setVisibility(View.GONE);
+        });
+
+        mViewModel.getSuccessGetListCategories().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                categoryAdapter.setMainData(mViewModel.getCategoryList());
+                categoryAdapter.notifyDataSetChanged();
+            }
+        });
+        mViewModel.getErrorGetListCategories().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                Toast.makeText(getContext(), "ERROR", Toast.LENGTH_LONG).show();
+            }
         });
     }
 }
