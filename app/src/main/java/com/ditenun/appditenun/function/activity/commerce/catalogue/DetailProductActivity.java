@@ -74,69 +74,6 @@ public class DetailProductActivity extends AppCompatActivity {
             ProductDescriptionFragment productDescriptionFragment = new ProductDescriptionFragment();
             productDescriptionFragment.show(fragmentManager, "product_description_fragment");
         });
-        binding.btnIncreaseQty.setOnClickListener(view -> viewModel.increaseProductQty());
-        binding.btnDecreaseQty.setOnClickListener(view -> viewModel.decreaseProductQty());
-        setupColorAdapter();
-        setupSizeSpinner();
-    }
-
-    private void setupColorAdapter() {
-        binding.rvColor.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false));
-        colorAdapter = new SimpleRecyclerAdapter<>(new ArrayList<>(), R.layout.item_product_color, (holder, item) -> {
-
-            ItemProductColorBinding itemBinding = (ItemProductColorBinding) holder.getLayoutBinding();
-
-            switch (item) {
-                case "Merah": {
-                    itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.colorRed));
-                    break;
-                }
-                case "Biru": {
-                    itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.colorBlue));
-                    break;
-                }
-                case "Hijau": {
-                    itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.colorGreen));
-                    break;
-                }
-                case "Kuning": {
-                    itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.colorYellow));
-                    break;
-                }
-                case "Hitam": {
-                    itemBinding.colorValue.setImageDrawable(getResources().getDrawable(R.color.black));
-                }
-            }
-
-            if (item.equalsIgnoreCase(viewModel.getSelectedColor())) {
-                itemBinding.selectedColorIndicator.setVisibility(View.VISIBLE);
-            } else {
-                itemBinding.selectedColorIndicator.setVisibility(View.INVISIBLE);
-            }
-
-            itemBinding.colorValue.setOnClickListener(view -> {
-                viewModel.setSelectedColor(item);
-                colorAdapter.notifyDataSetChanged();
-            });
-
-        });
-        binding.rvColor.setAdapter(colorAdapter);
-    }
-
-    private void setupSizeSpinner() {
-        sizeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, new ArrayList<>());
-        binding.spinnerSize.setAdapter(sizeAdapter);
-        binding.spinnerSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                viewModel.setSelectedSize(sizeAdapter.getItem(i));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
 
     private void observeLiveData() {
@@ -154,31 +91,8 @@ public class DetailProductActivity extends AppCompatActivity {
                 binding.tvProductNameAppBar.setText(viewModel.getProduct().getName());
                 binding.tvProductName.setText(viewModel.getProduct().getName());
                 binding.tvProductPrice.setText(TextUtil.getInstance().formatToRp(viewModel.getProduct().getPriceInDouble()));
-                binding.tvProductQty.setText(viewModel.getProduct().getStockQuantity().toString());
-                setColorList();
-                setSizeList();
             }
         });
-
-        viewModel.getIncreasePurchaseQtyEvent().observe(this, qty -> binding.tvProductQty.setText(qty.toString()));
-        viewModel.getDecreasePurchaseQtyEvent().observe(this, qty -> binding.tvProductQty.setText(qty.toString()));
-    }
-
-    private void setColorList() {
-        if (viewModel.getProductColorList().size() > 0) {
-            binding.lyColorPicker.setVisibility(View.VISIBLE);
-            colorAdapter.setMainData(viewModel.getProductColorList());
-            colorAdapter.notifyDataSetChanged();
-        } else {
-            binding.lyColorPicker.setVisibility(View.GONE);
-        }
-    }
-
-    private void setSizeList() {
-        if (viewModel.getProductSizeList().size() > 0) {
-            sizeAdapter.addAll(viewModel.getProductSizeList());
-            sizeAdapter.notifyDataSetChanged();
-        }
     }
 
     private void orderProduct() {

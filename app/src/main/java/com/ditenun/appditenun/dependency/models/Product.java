@@ -286,7 +286,7 @@ public class Product implements Parcelable {
     }
 
     public Integer getStockQuantity() {
-        if (stockQuantity != null){
+        if (stockQuantity != null) {
             return stockQuantity;
         }
         return 0;
@@ -345,7 +345,10 @@ public class Product implements Parcelable {
     }
 
     public Double getPriceInDouble() {
-        return Double.valueOf(price);
+        if (price != null && !price.isEmpty()) {
+            return Double.valueOf(price);
+        }
+        return 0.0;
     }
 
     public Double getRegularPriceInDouble() {

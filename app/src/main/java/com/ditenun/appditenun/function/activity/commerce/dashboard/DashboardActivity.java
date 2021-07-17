@@ -56,15 +56,15 @@ public class DashboardActivity extends AppCompatActivity {
                     fragment = ProductFragment.newInstance();
                     break;
                 }
-                case R.id.bottom_nav_cart: {
-                    Intent intent = new Intent(getApplicationContext(), CartActivity.class);
-                    startActivity(intent);
-                    break;
-                }
-                case R.id.bottom_nav_account: {
-                    fragment = AccountFragment.newInstance();
-                    break;
-                }
+//                case R.id.bottom_nav_cart: {
+//                    Intent intent = new Intent(getApplicationContext(), CartActivity.class);
+//                    startActivity(intent);
+//                    break;
+//                }
+//                case R.id.bottom_nav_account: {
+//                    fragment = AccountFragment.newInstance();
+//                    break;
+//                }
             }
             return loadFragment(fragment);
         });

@@ -2,22 +2,17 @@ package com.ditenun.appditenun.dependency.modules;
 
 import android.text.TextUtils;
 
-import java.util.Arrays;
-
-import okhttp3.ConnectionSpec;
 import okhttp3.Credentials;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
-import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 
 public class WooCommerceApiClient {
 
     public static final String CONSUMER_KEY = "ck_aafcf857cc8c47b9ac913ef80528857db05e542e";
     public static final String CONSUMER_SECRET = "cs_a6a6a5f6a39e06fb42eca681b77a3e6563666da2";
-    public static final String BASE_URL = "https://beta.ditenun.com/";
+    public static final String BASE_URL = "https://ditenun.com/";
     private static Retrofit retrofit = null;
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
